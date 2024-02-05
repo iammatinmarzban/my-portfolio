@@ -1,169 +1,216 @@
 // I'm not aware of it's exact use
 "use client";
 import { useMotionTemplate, useMotionValue, motion } from "framer-motion";
-import { Roboto, Libre_Franklin } from "next/font/google";
-import { MouseEvent, useEffect, useState } from "react";
-import { TypeAnimation } from "react-type-animation";
-const roboto = Roboto({ subsets: ["latin"], weight: ["400"] });
-const libre_franklin = Libre_Franklin({ subsets: ["latin"], weight: ["600"] });
+import { Roboto, Libre_Franklin, Inter } from "next/font/google";
+import { Root, root } from "postcss";
+import { MouseEvent, MouseEventHandler, useEffect } from "react";
+const inter = Inter({ subsets: ["latin"] });
+// const roboto = Roboto({ subsets: ["latin"], weight: ["400"] });
+// const libre_franklin = Libre_Franklin({ subsets: ["latin"], weight: ["600"] });
 export default function Home() {
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
-  // const [mousePosition, setMousePosition] = useState({
-  //   x: 0,
-  //   y: 0,
-  // });
+
   function handleMouseMove({ clientX, clientY, currentTarget }: MouseEvent) {
     let { left, top } = currentTarget.getBoundingClientRect();
-
     let xPosition = clientX - left;
     let yPostition = clientY - top;
-
     mouseX.set(xPosition);
     mouseY.set(yPostition);
-
-    // setMousePosition({ x: xPosition, y: yPostition });
   }
-
-  useEffect(() => {
-    const handleMouseMove = (event: any) => {
-      // setMousePosition({ x: event.clientX, y: event.clientY });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    // return () => {
-    //   window.removeEventListener("mousemove", handleMouseMove);
-    // };
-  }, []);
   return (
-    <main className={roboto.className}>
-      <div className="page bg-black h-screen w-full ">
-        <div className=" alert bg-gradient-to-r from-[#152C4E]  to-[#152C4E]   via-[#155ae466] w-full my-auto p-2 text-center ">
-          <span className="text-white text-sm">
-            To get the latest information about me click{" "}
-            <a className="hover:underline cursor-pointer underline"> here</a>.
-          </span>
-        </div>
-        <div className="sticky-navbar flex justify-between text-white py-5 px-4 sticky  mx-auto ">
-          <div className="left_side flex gap-2 ml-2 ">
-            <button
-              className="
-              Logo
-              hover:bg-white hover:text-[#313131] duration-150 "
-            >
-              Logo
-            </button>
-            <button className="hover:bg-white hover:text-[#313131] duration-150 bg-[#313131] p-2 rounded">
-              {/* <span className="relative inline-block h-[9px] w-[9px] rounded-full border border-black dark:border-white dark:shadow-dot-dark-mode after:absolute after:left-1/2 after:top-1/2 after:block after:h-0 after:w-0 after:origin-center after:-translate-x-1/2 after:-translate-y-1/2 after:rounded-full after:bg-black after:shadow-dot-light-mode after:transition-all dark:after:bg-white dark:after:text-black lg:after:bg-white lg:after:shadow-dot-dark-mode dark:lg:after:shadow-arb-one-blue dark:lg:after:bg-arbitrum-one-blue"></span>   */}
-              Products
-            </button>
-            <button className="hover:bg-white hover:text-[#313131] duration-150 bg-[#313131] p-2 rounded  ">
-              Portal
-            </button>
-            <button className="hover:bg-white hover:text-[#313131] duration-150 bg-[#313131] p-2 rounded">
-              Bridge
-            </button>
-            <button className="hover:bg-white hover:text-[#313131] duration-150 bg-[#313131] p-2 rounded">
-              Commiunity
-            </button>
-            <button className="hover:bg-white hover:text-[#313131] duration-150 bg-[#313131] p-2 rounded">
-              Resources
-            </button>
-          </div>
-          <div className="right_side flex gap-3 mr-2 items-center ">
-            <svg
-              className="
-                Linked_in_logo
-                fill-white"
-              xmlns="http://www.w3.org/2000/svg"
-              height="16"
-              width="14"
-              viewBox="0 0 448 512"
-            >
-              {/* --!Font Awesome Free 6.5.1 by @fontawesome -
-                https://fontawesome.com License -
-                https://fontawesome.com/license/free Copyright 2024 Fonticons,
-                Inc. */}
-              <path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z" />
-            </svg>
-            <svg
-              className="
-                Discord_logo
-                fill-white"
-              xmlns="http://www.w3.org/2000/svg"
-              height="16"
-              width="20"
-              viewBox="0 0 640 512"
-            >
-              {/* --!Font Awesome Free 6.5.1 by @fontawesome -
-                https://fontawesome.com License -
-                https://fontawesome.com/license/free Copyright 2024 Fonticons,
-                Inc.-- */}
-              <path d="M524.5 69.8a1.5 1.5 0 0 0 -.8-.7A485.1 485.1 0 0 0 404.1 32a1.8 1.8 0 0 0 -1.9 .9 337.5 337.5 0 0 0 -14.9 30.6 447.8 447.8 0 0 0 -134.4 0 309.5 309.5 0 0 0 -15.1-30.6 1.9 1.9 0 0 0 -1.9-.9A483.7 483.7 0 0 0 116.1 69.1a1.7 1.7 0 0 0 -.8 .7C39.1 183.7 18.2 294.7 28.4 404.4a2 2 0 0 0 .8 1.4A487.7 487.7 0 0 0 176 479.9a1.9 1.9 0 0 0 2.1-.7A348.2 348.2 0 0 0 208.1 430.4a1.9 1.9 0 0 0 -1-2.6 321.2 321.2 0 0 1 -45.9-21.9 1.9 1.9 0 0 1 -.2-3.1c3.1-2.3 6.2-4.7 9.1-7.1a1.8 1.8 0 0 1 1.9-.3c96.2 43.9 200.4 43.9 295.5 0a1.8 1.8 0 0 1 1.9 .2c2.9 2.4 6 4.9 9.1 7.2a1.9 1.9 0 0 1 -.2 3.1 301.4 301.4 0 0 1 -45.9 21.8 1.9 1.9 0 0 0 -1 2.6 391.1 391.1 0 0 0 30 48.8 1.9 1.9 0 0 0 2.1 .7A486 486 0 0 0 610.7 405.7a1.9 1.9 0 0 0 .8-1.4C623.7 277.6 590.9 167.5 524.5 69.8zM222.5 337.6c-29 0-52.8-26.6-52.8-59.2S193.1 219.1 222.5 219.1c29.7 0 53.3 26.8 52.8 59.2C275.3 311 251.9 337.6 222.5 337.6zm195.4 0c-29 0-52.8-26.6-52.8-59.2S388.4 219.1 417.9 219.1c29.7 0 53.3 26.8 52.8 59.2C470.7 311 447.5 337.6 417.9 337.6z" />
-            </svg>
-
-            <button className=" p-2 rounded text-black bg-white">Docs</button>
-          </div>
-        </div>
+    <main className={inter.className}>
+      <div
+        onMouseMove={handleMouseMove}
+        className="group/bg mx-auto text-center relative bg-[#051731] min-h-screen "
+      >
+        <motion.div
+          className="pointer-events-none  inset-0 absolute group-hover/bg:opacity-90 transition duration-300 "
+          style={{
+            background: useMotionTemplate`radial-gradient(circle 500px at ${mouseX}px ${mouseY}px ,rgb(13 165 233 / 0.1),transparent 80%)`,
+          }}
+        />
         <div
-          onMouseMove={handleMouseMove}
-          className="group h-[32rem] overflow-hidden  mx-auto my-4 rounded text-center relative bg-gray-900 w-[97%]"
+          className="content flex justify-between  text-gray-400 max-w-screen-lg mx-auto pt-24 items-start 
+        "
         >
-          <motion.div
-            className="pointer-events-none cursor-pointer inset-0 absolute group-hover:opacity-100 transition duration-300 opacity-0"
-            style={{
-              background: useMotionTemplate`radial-gradient(circle 500px at ${mouseX}px ${mouseY}px ,rgb(13 165 233 / 0.15),transparent 80%)`,
-            }}
-          />
-          <div
-            className=" content_inside_hover_board w-full flex justify-between text-white text-left items-end h-full
-              "
-          >
-            <div className="left ml-2">
-              <p
-                className={libre_franklin.className}
-                style={{
-                  textAlign: "left",
-                  marginBottom: "100px",
-                }}
-              >
-                <TypeAnimation
-                  sequence={[
-                    "MATIN MARZBAN",
-                    5000,
-                    "FRONT END DEVELOPER",
-                    5000,
-                    "UI/UX DESGNER",
-                    5000,
-                  ]}
-                  speed={15}
-                  repeat={Infinity}
-                  style={{ fontSize: "10px" }}
-                />
-              </p>
-              <h1 className="text-[60px] w-[60%] mb-1">
-                Welcome to the future of Front End Development
-              </h1>
+          <div className="left text-left basis-2/5 sticky  top-24 ">
+            <div className="name font-bold text-5xl text-slate-200 ">
+              <h1>Matin Marzban</h1>
             </div>
-            <div className="right"></div>
+            <div className="experties text-slate-200 my-2 text-2xl">
+              <h2>Front End Developer </h2>
+            </div>
+            <div className="description max-w-xs my-3 text-slate-400">
+              <p>
+                I build pixel-perfect, engaging, and accessible digital
+                experiences.
+              </p>
+            </div>
+            <div className="navbar my-14 text-gray-400 uppercase font-bold flex flex-col gap-7 text-xs">
+              <div className="navbar-item flex items-center about gap-2 group/about cursor-pointer">
+                <span className="w-6 h-[0.05em] bg-gray-400  duration-150 group-hover/about:bg-white group-hover/about:w-8 pointer "></span>
+                <div className="group-hover/about:text-white">About</div>
+              </div>
+              <div className="navbar-item experience flex items-center gap-2 group/skillset cursor-pointer ">
+                <span className="w-6 h-[0.05em] bg-gray-400 group-hover/skillset:bg-white group-hover/skillset:w-8 duration-150"></span>
+                <div className="group-hover/skillset:text-white">skillset</div>
+              </div>
+              <div className="navbar-item project flex items-center gap-2 group/project">
+                <span className="w-6 h-[0.05em] bg-gray-400  group-hover/project:bg-white group-hover/project:w-8 duration-150"></span>
+                <div className="group-hover/project:text-white">project</div>
+              </div>
+            </div>
+            <div className="contact_me flex flex-col  gap-5 mt-10 text-xs ">
+              <div className="Email flex gap-2 items-center  text-gray-400 fill-gray-400 border-2 border-transparent rounded-md py-3 ">
+                {/* <svg
+                    className="w-6 h-6 "
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                  >
+                    !--!Font Awesome Free 6.5.1 by @fontawesome -
+                    https://fontawesome.com License -
+                    https://fontawesome.com/license/free Copyright 2024
+                    Fonticons, Inc.--
+                    <path d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z" />
+                  </svg> */}
+                <div className="email-text flex flex-col">
+                  <h3>Email</h3>
+                  <h3 className="hover:underline">
+                    matinmarzban1271@gmail.com
+                  </h3>
+                </div>
+              </div>
+              <div className="phone_number flex flex-col  fill-gray-400 text-gray-400 gap-2">
+                <h3>Call</h3>
+                <h3 className="hover:underline">+98-9175271271</h3>
+              </div>
+            </div>
+            <div className="linkedIcons flex gap-6 mt-16">
+              <a href="https://www.github.com/iammatinmarzban">
+                <svg
+                  className="w-6 h-6 fill-gray-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 496 512"
+                >
+                  !--!Font Awesome Free 6.5.1 by @fontawesome -
+                  https://fontawesome.com License -
+                  https://fontawesome.com/license/free Copyright 2024 Fonticons,
+                  Inc.--
+                  <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+                </svg>
+              </a>
+
+              <a href="https://www.linkedin.com/in/matin-marzban-300371214">
+                <svg
+                  className="w-6 h-6 fill-gray-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                >
+                  --!Font Awesome Free 6.5.1 by @fontawesome -
+                  https://fontawesome.com License -
+                  https://fontawesome.com/license/free Copyright 2024 Fonticons,
+                  Inc.--
+                  <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/matinmarzbann">
+                <svg
+                  className="w-6 h-6 fill-gray-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                >
+                  !--!Font Awesome Free 6.5.1 by @fontawesome -
+                  https://fontawesome.com License -
+                  https://fontawesome.com/license/free Copyright 2024 Fonticons,
+                  Inc.--
+                  <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                </svg>
+              </a>
+              <a href="https://twitter.com/MatinMarzban">
+                <svg
+                  className="w-6 h-6 fill-gray-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                >
+                  !--!Font Awesome Free 6.5.1 by @fontawesome -
+                  https://fontawesome.com License -
+                  https://fontawesome.com/license/free Copyright 2024 Fonticons,
+                  Inc.--
+                  <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
+                </svg>
+              </a>
+              <a href="https://www.goodreads.com/user/show/132967048-matin-marzban">
+                <svg
+                  className="w-6 h-6 fill-gray-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                >
+                  !--!Font Awesome Free 6.5.1 by @fontawesome
+                  https://fontawesome.com License -
+                  https://fontawesome.com/license/free Copyright 2024 Fonticons,
+                  Inc.--``
+                  <path d="M299.9 191.2c5.1 37.3-4.7 79-35.9 100.7-22.3 15.5-52.8 14.1-70.8 5.7-37.1-17.3-49.5-58.6-46.8-97.2 4.3-60.9 40.9-87.9 75.3-87.5 46.9-.2 71.8 31.8 78.2 78.3zM448 88v336c0 30.9-25.1 56-56 56H56c-30.9 0-56-25.1-56-56V88c0-30.9 25.1-56 56-56h336c30.9 0 56 25.1 56 56zM330 313.2s-.1-34-.1-217.3h-29v40.3c-.8 .3-1.2-.5-1.6-1.2-9.6-20.7-35.9-46.3-76-46-51.9 .4-87.2 31.2-100.6 77.8-4.3 14.9-5.8 30.1-5.5 45.6 1.7 77.9 45.1 117.8 112.4 115.2 28.9-1.1 54.5-17 69-45.2 .5-1 1.1-1.9 1.7-2.9 .2 .1 .4 .1 .6 .2 .3 3.8 .2 30.7 .1 34.5-.2 14.8-2 29.5-7.2 43.5-7.8 21-22.3 34.7-44.5 39.5-17.8 3.9-35.6 3.8-53.2-1.2-21.5-6.1-36.5-19-41.1-41.8-.3-1.6-1.3-1.3-2.3-1.3h-26.8c.8 10.6 3.2 20.3 8.5 29.2 24.2 40.5 82.7 48.5 128.2 37.4 49.9-12.3 67.3-54.9 67.4-106.3z" />
+                </svg>
+              </a>
+            </div>
           </div>
-        </div>
-        <div className="second_section">
-          {/* <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="802"
-            height="668"
-            viewBox="0 0 802 668"
-            fill="none"
-          >
-            <path
-              d="M800.771 41.9294C738.224 -41.7361 526.794 9.52977 319.558 155.483M169.058 281.167C32.7873 416.713 -32.6005 557.209 19.0663 626.321C58.0542 678.473 154.89 678.197 272.5 635.241M795.4 191.5C759.287 271.7 682.509 366.138 578.261 453"
-              stroke="black"
-              stroke-opacity="0.35"
-              stroke-width="0.75"
-              stroke-dasharray="3 8"
-            ></path>
-          </svg> */}
+          <div className="right text-left basis-1/2 text-gray-400  top-24 text-base  ">
+            <div className="About">
+              <div className="first">
+                {" "}
+                I initiated my journey into the realm of web development by
+                engaging with <span>WordPress</span>. Subsequently, I made the
+                deliberate choice to build my foundation from the ground up,
+                delving into HTML, CSS, and Javascript. It was Javascript that
+                particularly captured my interest. As I progressed, I ventured
+                into <span>React</span> and
+                <span>Next.js</span>, which currently constitute my primary
+                areas of focus.
+              </div>
+              <div className="second mt-6">
+                My enthusiasm for web development has experienced a notable
+                transformation. Initially centered on the programming aspect, a
+                pivotal moment occurred that expanded my interest to include
+                design. This shift transpired during my initial exploration of
+                websites crafted by
+                <span>
+                  {/* add a joke inside a div  */}
+                  <a href="https://bruno-simon.com/">Bruno Simons</a>
+                </span>
+              </div>
+              <div className="third mt-6">
+                I manage to stay updated through online communities, Youtube and
+                documentations on upcoming and existing technologies.
+              </div>
+            </div>
+            {/* <div className="Experience">
+              <div className="card max-w-full bg-white">
+                <div className="left">
+                  <h1>My current Skills</h1>
+                  <div className='first'>
+                    <h2>Frontend:</h2>
+                    <div className='Backend'></div>
+                  </div>
+                  <div className="DevOps"></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div className="right"></div>
+              </div>
+            </div> */}
+            <div className="Projects min-w-full  mt-24 py-3">
+              <div className="card flex  text-gray-400">
+                <div className="left ">2018</div>
+                <div className="right">
+                  <div className="name">Project 1</div>
+                  <div className="role">Role</div>
+                  <div className="description">blah blah blah</div>
+                  <div className="techStack">Tech stack</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>

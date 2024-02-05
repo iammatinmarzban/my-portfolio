@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.linkedIcons>svg:hover{
+    fill:#d4deef;
+    transition-delay:10ms;
+    transition-duration: 300ms;
+}
+.About span{
+    color:white;
+    padding-inline: 2px;
+}
+
+
