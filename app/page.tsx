@@ -34,7 +34,7 @@ export default function Home() {
           className="content flex justify-between  text-gray-400 max-w-screen-lg mx-auto pt-24 items-start 
         "
         >
-          <div className="left text-left basis-2/5 sticky  top-24 ">
+          <div className="left text-left basis-2/5 sticky  top-24">
             <div className="name font-bold text-5xl text-slate-200 ">
               <h1>Matin Marzban</h1>
             </div>
@@ -48,15 +48,15 @@ export default function Home() {
               </p>
             </div>
             <div className="navbar my-14 text-gray-400 uppercase font-bold flex flex-col gap-7 text-xs">
-              <div className="navbar-item flex items-center about gap-2 group/about cursor-pointer">
+              <div className="navbar-item flex items-center about gap-2 group/about cursor-pointer max-w-min">
                 <span className="w-6 h-[0.05em] bg-gray-400  duration-150 group-hover/about:bg-white group-hover/about:w-8 pointer "></span>
                 <div className="group-hover/about:text-white">About</div>
               </div>
-              <div className="navbar-item experience flex items-center gap-2 group/skillset cursor-pointer ">
+              <div className="navbar-item experience flex items-center gap-2 group/skillset cursor-pointer max-w-min">
                 <span className="w-6 h-[0.05em] bg-gray-400 group-hover/skillset:bg-white group-hover/skillset:w-8 duration-150"></span>
                 <div className="group-hover/skillset:text-white">skillset</div>
               </div>
-              <div className="navbar-item project flex items-center gap-2 group/project">
+              <div className="navbar-item project flex items-center gap-2 group/project max-w-min cursor-pointer">
                 <span className="w-6 h-[0.05em] bg-gray-400  group-hover/project:bg-white group-hover/project:w-8 duration-150"></span>
                 <div className="group-hover/project:text-white">project</div>
               </div>
@@ -184,29 +184,29 @@ export default function Home() {
                 documentations on upcoming and existing technologies.
               </div>
             </div>
-            {/* <div className="Experience">
-              <div className="card max-w-full bg-white">
-                <div className="left">
-                  <h1>My current Skills</h1>
-                  <div className='first'>
-                    <h2>Frontend:</h2>
-                    <div className='Backend'></div>
-                  </div>
-                  <div className="DevOps"></div>
-                  <div></div>
-                  <div></div>
+            <div className="Projects min-w-full  mt-24 py-3 mb-12 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-20  duration-200 hover:bg-[#1c2b4074]">
+              <div className="card flex text-gray-400 p-3">
+                <div className="left basis-1/5 text-xs font-semibold  text-gray-500">
+                  2018__
+                  <br />
+                  PRESENT
                 </div>
-                <div className="right"></div>
-              </div>
-            </div> */}
-            <div className="Projects min-w-full  mt-24 py-3">
-              <div className="card flex  text-gray-400">
-                <div className="left ">2018</div>
-                <div className="right">
-                  <div className="name">Project 1</div>
-                  <div className="role">Role</div>
-                  <div className="description">blah blah blah</div>
-                  <div className="techStack">Tech stack</div>
+                <div className="right basis-4/5">
+                  <div className="name text-white text-base font-medium">
+                    Lead Engineer Upstatement
+                  </div>
+                  <div className="role text-gray-500">Senior Engineer</div>
+                  <div className="description mt-3 text-sm">
+                    Build, style, and ship high-quality websites, design
+                    systems, mobile apps, and digital experiences for a diverse
+                    array of projects for clients including Harvard Business
+                    School, Everytown for Gun Safety, Pratt Institute, Koala
+                    Health, Vanderbilt University, The 19th News, and more.
+                    Provide leadership within engineering department through
+                    close collaboration, knowledge shares, and spearheading the
+                    development of internal tools.
+                  </div>
+                  <div className="techStack mt-3">Tech stack</div>
                 </div>
               </div>
             </div>
