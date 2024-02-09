@@ -2,7 +2,7 @@
 "use client";
 import { useMotionTemplate, useMotionValue, motion } from "framer-motion";
 import { Roboto, Libre_Franklin, Inter } from "next/font/google";
-import { Root, root } from "postcss";
+import Link from "next/link";
 import { MouseEvent, MouseEventHandler, useEffect } from "react";
 const inter = Inter({ subsets: ["latin"] });
 // const roboto = Roboto({ subsets: ["latin"], weight: ["400"] });
@@ -31,7 +31,7 @@ export default function Home() {
           }}
         />
         <div
-          className="content flex justify-between  text-gray-400 max-w-screen-lg mx-auto pt-24 items-start 
+          className="content   flex justify-between  text-gray-400 max-w-screen-xl mx-auto pt-24 items-start 
         "
         >
           <div className="left text-left basis-2/5 sticky  top-24">
@@ -49,15 +49,17 @@ export default function Home() {
             </div>
             <div className="navbar my-14 text-gray-400 uppercase font-bold flex flex-col gap-7 text-xs">
               <div className="navbar-item flex items-center about gap-2 group/about cursor-pointer max-w-min">
-                <span className="w-6 h-[0.05em] bg-gray-400  duration-150 group-hover/about:bg-white group-hover/about:w-8 pointer "></span>
+                <span className="w-8 h-[0.1em] bg-gray-400  duration-150 group-hover/about:bg-white group-hover/about:w-12 pointer "></span>
                 <div className="group-hover/about:text-white">About</div>
               </div>
-              <div className="navbar-item experience flex items-center gap-2 group/skillset cursor-pointer max-w-min">
-                <span className="w-6 h-[0.05em] bg-gray-400 group-hover/skillset:bg-white group-hover/skillset:w-8 duration-150"></span>
-                <div className="group-hover/skillset:text-white">skillset</div>
+              <div className="navbar-item experience flex items-center gap-2 group/jobExperience cursor-pointer max-w-min">
+                <span className="w-8 h-[0.1em] bg-gray-400 group-hover/jobExperience:bg-white group-hover/jobExperience:w-12 duration-150"></span>
+                <div className="group-hover/jobExperience:text-white">
+                  Experience
+                </div>
               </div>
               <div className="navbar-item project flex items-center gap-2 group/project max-w-min cursor-pointer">
-                <span className="w-6 h-[0.05em] bg-gray-400  group-hover/project:bg-white group-hover/project:w-8 duration-150"></span>
+                <span className="w-8 h-[0.1em] bg-gray-400  group-hover/project:bg-white group-hover/project:w-12 duration-150"></span>
                 <div className="group-hover/project:text-white">project</div>
               </div>
             </div>
@@ -184,31 +186,101 @@ export default function Home() {
                 documentations on upcoming and existing technologies.
               </div>
             </div>
-            <div className="Projects min-w-full  mt-24 py-3 mb-12 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-20  duration-200 hover:bg-[#1c2b4074]">
-              <div className="card flex text-gray-400 p-3">
-                <div className="left basis-1/5 text-xs font-semibold  text-gray-500">
-                  2018__
-                  <br />
-                  PRESENT
+
+            <div className="Experience min-w-full   py-3 my-60 ">
+              <div className="experience-card flex items-baseline text-gray-400 p-3 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-10  duration-200 hover:bg-[#1c2b4074]">
+                <div className="left basis-1/5 text-xs font-medium  text-gray-500 pr-2">
+                  <div className="flex items-center">
+                    <span>2020</span>
+                    <span className="dash__ w-3 h-[0.07em]  bg-gray-500 mx-2"></span>
+                    <span>PRESENT</span>
+                  </div>
                 </div>
                 <div className="right basis-4/5">
                   <div className="name text-white text-base font-medium">
-                    Lead Engineer Upstatement
+                    Freelancer Developer
                   </div>
-                  <div className="role text-gray-500">Senior Engineer</div>
+                  <div className="role text-gray-500">
+                    Front End Developer & UI UX designer
+                  </div>
                   <div className="description mt-3 text-sm">
                     Build, style, and ship high-quality websites, design
                     systems, mobile apps, and digital experiences for a diverse
-                    array of projects for clients including Harvard Business
-                    School, Everytown for Gun Safety, Pratt Institute, Koala
-                    Health, Vanderbilt University, The 19th News, and more.
-                    Provide leadership within engineering department through
-                    close collaboration, knowledge shares, and spearheading the
-                    development of internal tools.
+                    array of projects for clients including Asanbar Business and
+                    more.
                   </div>
-                  <div className="techStack mt-3">Tech stack</div>
                 </div>
               </div>
+            </div>
+            <div className="Project my-60">
+              <Link href={"/Asanbar"}>
+                <div className="project-card  flex justify-between items-center  text-gray-400 p-3 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-10  duration-200 hover:bg-[#1c2b4074] cursor-pointer group/project my-3">
+                  <div className="left flex  gap-6">
+                    <div className="left">
+                      <img
+                        className="w-[100px] h-auto "
+                        src="logo.png"
+                        alt="driver"
+                      />
+                    </div>
+                    <div className="right">
+                      <div className="name text-white text-base font-medium group-hover/project:text-[#a5d1e5]">
+                        AsanBar
+                      </div>
+                      <div className="role text-gray-500">
+                        Front End Developer
+                      </div>
+                    </div>
+                  </div>
+                  <div className="right">
+                    <svg
+                      className="w-5 h-5 fill-white group-hover/project:fill-[#a5d1e5]"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 320 512"
+                    >
+                      !--!Font Awesome Free 6.5.1 by @fontawesome -
+                      https://fontawesome.com License -
+                      https://fontawesome.com/license/free Copyright 2024
+                      Fonticons, Inc.--
+                      <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                    </svg>
+                  </div>
+                </div>
+              </Link>
+              <Link href={"/"}>
+                <div className="project-card  flex justify-between items-center  text-gray-400 p-3 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-10  duration-200 hover:bg-[#1c2b4074] cursor-pointer group/project my-3">
+                  <div className="left flex  gap-6">
+                    <div className="left">
+                      <img
+                        className="w-[100px] h-auto "
+                        src="logo.png"
+                        alt="driver"
+                      />
+                    </div>
+                    <div className="right">
+                      <div className="name text-white text-base font-medium group-hover/project:text-[#a5d1e5]">
+                        AsanBarCo
+                      </div>
+                      <div className="role text-gray-500">
+                        Front End Developer
+                      </div>
+                    </div>
+                  </div>
+                  <div className="right">
+                    <svg
+                      className="w-5 h-5 fill-white group-hover/project:fill-[#a5d1e5]"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 320 512"
+                    >
+                      !--!Font Awesome Free 6.5.1 by @fontawesome -
+                      https://fontawesome.com License -
+                      https://fontawesome.com/license/free Copyright 2024
+                      Fonticons, Inc.--
+                      <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                    </svg>
+                  </div>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
