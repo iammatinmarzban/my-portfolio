@@ -1,17 +1,19 @@
 // I'm not aware of it's exact use
 "use client";
 import { useMotionTemplate, useMotionValue, motion } from "framer-motion";
-import { Roboto, Libre_Franklin, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import Link from "next/link";
-import { MouseEvent, MouseEventHandler, useEffect } from "react";
+import { MouseEvent, useRef, useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
-// const roboto = Roboto({ subsets: ["latin"], weight: ["400"] });
-// const libre_franklin = Libre_Franklin({ subsets: ["latin"], weight: ["600"] });
+
 export default function Home() {
+  const about = useRef<HTMLDivElement>(null);
+  const experience = useRef<HTMLDivElement>(null);
+  const project = useRef<HTMLDivElement>(null);
+  const [isActive, setIsActive] = useState("about");
+
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
-  function navigate() {}
-
   function handleMouseMove({ clientX, clientY, currentTarget }: MouseEvent) {
     let { left, top } = currentTarget.getBoundingClientRect();
     let xPosition = clientX - left;
@@ -19,6 +21,10 @@ export default function Home() {
     mouseX.set(xPosition);
     mouseY.set(yPostition);
   }
+  const handleNavClick = (ref: any) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <main className={inter.className}>
       <div
@@ -50,23 +56,65 @@ export default function Home() {
             </div>
             <div className="navbar my-14 text-gray-400 uppercase font-bold flex flex-col gap-7 text-xs">
               <div className="navbar-item flex items-center about gap-2 group/about cursor-pointer max-w-min">
-                <span className="w-8 h-[0.1em] bg-gray-400  duration-150 group-hover/about:bg-white group-hover/about:w-12 pointer "></span>
-                <div className="group-hover/about:text-white">About</div>
-              </div>
-              <div className="navbar-item experience flex items-center gap-2 group/jobExperience cursor-pointer max-w-min">
-                <span className="w-8 h-[0.1em] bg-gray-400 group-hover/jobExperience:bg-white group-hover/jobExperience:w-12 duration-150"></span>
+                <span
+                  className={`w-8 h-[0.1em] bg-gray-400 group-hover/about:bg-white group-hover/about:w-12 duration-150 ${
+                    isActive == "about"
+                      ? "bg-white w-12"
+                      : "w-8 h-[0.1em] bg-gray-400"
+                  }`}
+                ></span>
                 <div
                   onClick={() => {
-                    navigate();
+                    handleNavClick(about);
+                    setIsActive("about");
                   }}
-                  className="group-hover/jobExperience:text-white"
+                  className={`group-hover/about:text-white ${
+                    isActive == "about" ? "text-white" : "text-gray-400"
+                  }`}
+                >
+                  About
+                </div>
+              </div>
+              <div className="navbar-item experience flex items-center gap-2 group/jobExperience cursor-pointer max-w-min">
+                <span
+                  className={`w-8 h-[0.1em] bg-gray-400 group-hover/jobExperience:bg-white group-hover/jobExperience:w-12 duration-150 ${
+                    isActive == "experience"
+                      ? "bg-white w-12"
+                      : "w-8 h-[0.1em] bg-gray-400"
+                  }`}
+                ></span>
+                <div
+                  onClick={() => {
+                    handleNavClick(experience);
+                    setIsActive("experience");
+                  }}
+                  className={`group-hover/jobExperience:text-white ${
+                    isActive == "experience" ? "text-white" : "text-gray-400"
+                  }`}
                 >
                   Experience
                 </div>
               </div>
               <div className="navbar-item project flex items-center gap-2 group/project max-w-min cursor-pointer">
-                <span className="w-8 h-[0.1em] bg-gray-400  group-hover/project:bg-white group-hover/project:w-12 duration-150"></span>
-                <div className="group-hover/project:text-white">project</div>
+                <span
+                  className={`w-8 h-[0.1em] bg-gray-400 group-hover/project:bg-white group-hover/project:w-12 duration-150 ${
+                    isActive == "project"
+                      ? "bg-white w-12"
+                      : "w-8 h-[0.1em] bg-gray-400"
+                  }`}
+                ></span>
+                <div
+                  onClick={() => {
+                    handleNavClick(project);
+                    setIsActive("project");
+                    console.log(isActive);
+                  }}
+                  className={`group-hover/project:text-white ${
+                    isActive == "project" ? "text-white" : "text-gray-400"
+                  }`}
+                >
+                  project
+                </div>
               </div>
             </div>
             <div className="contact_me flex flex-col  gap-5 mt-10 text-xs ">
@@ -163,7 +211,10 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="right text-left basis-1/2 text-gray-400  top-24 text-base  ">
+          <div
+            ref={about}
+            className="right text-left basis-1/2 text-gray-400  top-24 text-base  "
+          >
             <div className="About">
               <div className="first">
                 {" "}
@@ -193,7 +244,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="Experience min-w-full flex flex-col gap-2  py-3 my-60 ">
+            <div
+              ref={experience}
+              className="Experience min-w-full flex flex-col gap-2  py-3 my-60 "
+            >
               <div className="experience-card flex items-baseline text-gray-400 p-3 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-10  duration-200 hover:bg-[#1c2b4074]">
                 <div className="left basis-1/5 text-xs font-medium  text-gray-500 pr-2">
                   <div className="flex items-center">
@@ -286,13 +340,13 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="Project my-60 flex flex-col gap-1">
+            <div ref={project} className="Project my-60 flex flex-col gap-1">
               <Link href={"/Asanbar"}>
                 <div className="project-card  flex justify-between items-center  text-gray-400 p-3 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-10  duration-200 hover:bg-[#1c2b4074] cursor-pointer group/project my-3">
                   <div className="left flex  gap-6">
                     <div className="left">
                       <img
-                        className="w-[100px] h-auto "
+                        className="max-w-[100px] max-h-[80px] "
                         src="logo.png"
                         alt="driver"
                       />
