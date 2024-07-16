@@ -1,9 +1,12 @@
-// I'm not aware of it's exact use
 "use client";
 import { useMotionTemplate, useMotionValue, motion } from "framer-motion";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+// import navigationHandler from "./navigationHandler";
+
 import { MouseEvent, useRef, useState } from "react";
+import ExperienceCard from "./components/About/ExperienceCard";
+import ContactMeCard from "./components/ContactMeCard";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -12,8 +15,10 @@ export default function Home() {
   const project = useRef<HTMLDivElement>(null);
   const [isActive, setIsActive] = useState("about");
 
+  // Framer motion   back-light mouse-responsive-animation set up
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
+  // Function for Creating Backlight Effect
   function handleMouseMove({ clientX, clientY, currentTarget }: MouseEvent) {
     let { left, top } = currentTarget.getBoundingClientRect();
     let xPosition = clientX - left;
@@ -21,40 +26,220 @@ export default function Home() {
     mouseX.set(xPosition);
     mouseY.set(yPostition);
   }
+
+  // How does this work?
+  // How does it know where to go?
+  // Added a {ref} to the parts intended to scroll to
   const handleNavClick = (ref: any) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <main className={inter.className}>
+      {/* className="group/bg mx-auto text-center relative  inset-0 bg-[#051731] min-h-lvh min-w-max" */}
+      <div className="contact-me-menu fixed inset-0 bg-red-950 text-white">
+        <div className="content-inside">
+          <div className="text flex items-center justify-center pt-5  ">
+            {/* <svg
+              className="stroke-white"
+              stroke="currentColor"
+              fill="currentColor"
+              stroke-width="1"
+              viewBox="0 0 24 24"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill="none"
+                stroke="#000"
+                stroke-width="2"
+                d="M5,12 C3.343,12 2,10.657 2,9 C2,7.343 3.343,6 5,6 C6.657,6 8,7.343 8,9 C8,10.657 6.657,12 5,12 Z M9,18 L9,16 C9,13.7504 7.2128,12 4.964,12 L5.0184,12 C2.7688,12 1,13.7504 1,16 L1,18 M12,7 L24,7 M12,17 L22,17 M12,12 L19,12"
+              ></path>
+            </svg> */}
+            <svg
+              className="w-6 h-6 fill-white mr-2"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 576 512"
+            >
+              --!Font Awesome Free 6.6.0 by @fontawesome -
+              https://fontawesome.com License -
+              https://fontawesome.com/license/free Copyright 2024 Fonticons,
+              Inc.
+              <path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l448 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm80 256l64 0c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16L80 384c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32l128 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-128 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64l128 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-128 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64l128 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-128 0c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
+            </svg>
+            <span>Contact Links</span>+
+          </div>
+          <div className="card-container flex flex-col gap-9 mt-7">
+            <ContactMeCard
+              name="LinkedIn"
+              icon={
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M444.17 32H70.28C49.85 32 32 46.7 32 66.89v374.72C32 461.91 49.85 480 70.28 480h373.78c20.54 0 35.94-18.21 35.94-38.39V66.89C480.12 46.7 464.6 32 444.17 32zm-273.3 373.43h-64.18V205.88h64.18zM141 175.54h-.46c-20.54 0-33.84-15.29-33.84-34.43 0-19.49 13.65-34.42 34.65-34.42s33.85 14.82 34.31 34.42c-.01 19.14-13.31 34.43-34.66 34.43zm264.43 229.89h-64.18V296.32c0-26.14-9.34-44-32.56-44-17.74 0-28.24 12-32.91 23.69-1.75 4.2-2.22 9.92-2.22 15.76v113.66h-64.18V205.88h64.18v27.77c9.34-13.3 23.93-32.44 57.88-32.44 42.13 0 74 27.77 74 87.64z"></path>
+                </svg>
+              }
+              description="Lets geta in touch!"
+              link="https://www.linkedin.com/in/matin-marzban-300371214"
+            />
+            <ContactMeCard
+              name={"github"}
+              icon={
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M256 32C132.3 32 32 134.9 32 261.7c0 101.5 64.2 187.5 153.2 217.9a17.56 17.56 0 003.8.4c8.3 0 11.5-6.1 11.5-11.4 0-5.5-.2-19.9-.3-39.1a102.4 102.4 0 01-22.6 2.7c-43.1 0-52.9-33.5-52.9-33.5-10.2-26.5-24.9-33.6-24.9-33.6-19.5-13.7-.1-14.1 1.4-14.1h.1c22.5 2 34.3 23.8 34.3 23.8 11.2 19.6 26.2 25.1 39.6 25.1a63 63 0 0025.6-6c2-14.8 7.8-24.9 14.2-30.7-49.7-5.8-102-25.5-102-113.5 0-25.1 8.7-45.6 23-61.6-2.3-5.8-10-29.2 2.2-60.8a18.64 18.64 0 015-.5c8.1 0 26.4 3.1 56.6 24.1a208.21 208.21 0 01112.2 0c30.2-21 48.5-24.1 56.6-24.1a18.64 18.64 0 015 .5c12.2 31.6 4.5 55 2.2 60.8 14.3 16.1 23 36.6 23 61.6 0 88.2-52.4 107.6-102.3 113.3 8 7.1 15.2 21.1 15.2 42.5 0 30.7-.3 55.5-.3 63 0 5.4 3.1 11.5 11.4 11.5a19.35 19.35 0 004-.4C415.9 449.2 480 363.1 480 261.7 480 134.9 379.7 32 256 32z"></path>
+                </svg>
+              }
+              description={"Take a closer look of my code!"}
+              link={"https://www.github.com/iammatinmarzban"}
+            />
+            <div className="Email-card">
+              <div className="card flex flex-col px-20 ">
+                <div className="top flex items-center  gap-3">
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 512 512"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      width="416"
+                      height="320"
+                      x="48"
+                      y="96"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="32"
+                      rx="40"
+                      ry="40"
+                    ></rect>
+                    <path
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="32"
+                      d="M112 160l144 112 144-112"
+                    ></path>
+                  </svg>
+                  <span>Email</span>
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    strokeWidth="0"
+                    viewBox="0 0 512 512"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="48"
+                      d="M268 112l144 144-144 144m124-144H100"
+                    ></path>
+                  </svg>
+                </div>
+                <div className="bottom">
+                  <span>matinmarzan1271@gmail.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div
         onMouseMove={handleMouseMove}
-        className="group/bg mx-auto text-center relative bg-[#051731] min-h-screen "
+        className="group/bg mx-auto text-center  bg-[#051731] "
       >
+        {/*  apart of framer motion package 
+             it's set to the full screen   creating the background we want
+        */}
+        {/* className="pointer-events-none  inset-0 absolute group-hover/bg:opacity-90 transition duration-300" */}
+
+        {/* display it's set to hidden   */}
         <motion.div
-          className="pointer-events-none  inset-0 absolute group-hover/bg:opacity-90 transition duration-300 "
+          className="pointer-events-none  inset-0 absolute group-hover/bg:opacity-90 transition duration-300 hidden"
           style={{
             background: useMotionTemplate`radial-gradient(circle 500px at ${mouseX}px ${mouseY}px ,rgb(13 165 233 / 0.1),transparent 80%)`,
           }}
         />
-        <div
-          className="content   flex justify-between  text-gray-400 max-w-screen-xl mx-auto pt-24 items-start 
-        "
-        >
-          <div className="left text-left basis-2/5 sticky  top-24">
-            <div className="name font-bold text-5xl text-slate-200 ">
+        {/* page-content-text flex justify-between text-gray-400 max-w-screen-xl mx-auto pt-24 items-start  */}
+
+        <div className="page-content-text  md:flex justify-between text-gray-400  mx-auto pt-14  md:pt-24 text-sm items-start px-5">
+          {/* <div className="left text-left basis-2/5 sticky  top-24"> */}
+          <div className="left-part-large-screen text-left">
+            {/* <div className="name font-bold text-5xl text-slate-200 "> */}
+            <div className="name font-bold text-3xl text-slate-200 ">
               <h1>Matin Marzban</h1>
             </div>
-            <div className="experties text-slate-200 my-2 text-2xl">
+            <div className="experties text-slate-200 my-2 text-base italic tracking-tight">
               <h2>Front End Developer </h2>
             </div>
-            <div className="description max-w-xs my-3 text-slate-400">
+            <div className="description  text-slate-400 text-sm">
               <p>
                 I build pixel-perfect, engaging, and accessible digital
                 experiences.
               </p>
             </div>
-            <div className="navbar my-14 text-gray-400 uppercase font-bold flex flex-col gap-7 text-xs">
+            <div className="contact-links-mobile bg-white fixed bottom-0 left-0 w-full py-4">
+              <div className="text sticky bottom-0  flex items-center justify-center text-black  ">
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill="none"
+                    stroke="#000"
+                    stroke-width="2"
+                    d="M5,12 C3.343,12 2,10.657 2,9 C2,7.343 3.343,6 5,6 C6.657,6 8,7.343 8,9 C8,10.657 6.657,12 5,12 Z M9,18 L9,16 C9,13.7504 7.2128,12 4.964,12 L5.0184,12 C2.7688,12 1,13.7504 1,16 L1,18 M12,7 L24,7 M12,17 L22,17 M12,12 L19,12"
+                  ></path>
+                </svg>
+                <span>contact links</span>
+              </div>
+              <div className="contact_me  flex-col  gap-5 mt-5 hidden">
+                <div className="Email flex gap-2 items-center  text-gray-400 fill-gray-400  border-[1px] border-transparent rounded-md py-3 ">
+                  <div className="email-text flex flex-col">
+                    <h3>Email</h3>
+                    <h3 className="hover:underline">
+                      matinmarzban1271@gmail.com
+                    </h3>
+                  </div>
+                </div>
+                <div className="phone_number flex flex-col  fill-gray-400 text-gray-400 gap-2  border-[1px] border-transparent">
+                  <h3>Call</h3>
+                  <h3 className="hover:underline">+98-9175271271</h3>
+                </div>
+              </div>
+            </div>
+
+            {/* "navbar my-14 text-gray-400 uppercase font-bold flex flex-col gap-7 text-xs " */}
+            {/*  *****Navbar is Hidden*****  */}
+            <div className="navbar my-14 text-gray-400 uppercase font-bold md:flex flex-col gap-7 text-xs hidden">
               <div className="navbar-item flex items-center about gap-2 group/about cursor-pointer max-w-min">
                 <span
                   className={`w-8 h-[0.1em] bg-gray-400 group-hover/about:bg-white group-hover/about:w-12 duration-150 ${
@@ -67,6 +252,7 @@ export default function Home() {
                   onClick={() => {
                     handleNavClick(about);
                     setIsActive("about");
+                    // navigationHandler(about);
                   }}
                   className={`group-hover/about:text-white ${
                     isActive == "about" ? "text-white" : "text-gray-400"
@@ -85,6 +271,7 @@ export default function Home() {
                 ></span>
                 <div
                   onClick={() => {
+                    // navigationHandler(experience);
                     handleNavClick(experience);
                     setIsActive("experience");
                   }}
@@ -105,9 +292,10 @@ export default function Home() {
                 ></span>
                 <div
                   onClick={() => {
+                    // navigationHandler(project);
                     handleNavClick(project);
                     setIsActive("project");
-                    console.log(isActive);
+                    // console.log(isActive);
                   }}
                   className={`group-hover/project:text-white ${
                     isActive == "project" ? "text-white" : "text-gray-400"
@@ -117,19 +305,9 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="contact_me flex flex-col  gap-5 mt-10 text-xs ">
+            {/* <div className="contact_me flex flex-col  gap-5 mt-10 text-xs  "> */}
+            <div className="contact_me-large-screen  flex-col  gap-5 mt-10 text-xs hidden  ">
               <div className="Email flex gap-2 items-center  text-gray-400 fill-gray-400 border-2 border-transparent rounded-md py-3 ">
-                {/* <svg
-                    className="w-6 h-6 "
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
-                  >
-                    !--!Font Awesome Free 6.5.1 by @fontawesome -
-                    https://fontawesome.com License -
-                    https://fontawesome.com/license/free Copyright 2024
-                    Fonticons, Inc.--
-                    <path d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z" />
-                  </svg> */}
                 <div className="email-text flex flex-col">
                   <h3>Email</h3>
                   <h3 className="hover:underline">
@@ -142,7 +320,10 @@ export default function Home() {
                 <h3 className="hover:underline">+98-9175271271</h3>
               </div>
             </div>
-            <div className="linkedIcons flex gap-6 mt-16">
+
+            {/* <div className="linkedIcons flex gap-6 mt-16"> */}
+            {/* Linked Icons is **HIDDEN** */}
+            <div className="linkedIcons hidden  gap-6 mt-16">
               <a href="https://www.github.com/iammatinmarzban">
                 <svg
                   className="w-6 h-6 fill-gray-400"
@@ -213,10 +394,11 @@ export default function Home() {
           </div>
           <div
             ref={about}
-            className="right text-left basis-1/2 text-gray-400  top-24 text-base  "
+            className="right-part-large-screen text-left basis-1/2 text-gray-400  top-24 text-base  "
           >
-            <div className="About">
-              <div className="first">
+            <div className="About  pt-16">
+              <h3 className="text-white pb-10 tracking-wide ">ABOUT</h3>
+              <div className="first ">
                 {" "}
                 I initiated my journey into the realm of web development by
                 engaging with <span>WordPress</span>. Subsequently, I made the
@@ -234,8 +416,7 @@ export default function Home() {
                 design. This shift transpired during my initial exploration of
                 websites crafted by
                 <span>
-                  {/* add a joke inside a div  */}
-                  <a href="https://bruno-simon.com/">Bruno Simons</a>
+                  <a href="https://bruno-simon.com/"> Bruno Simons</a>
                 </span>
               </div>
               <div className="third mt-6">
@@ -246,101 +427,44 @@ export default function Home() {
 
             <div
               ref={experience}
-              className="Experience min-w-full flex flex-col gap-2  py-3 my-60 "
+              className="Experience min-w-full flex flex-col gap-2  pt-16"
             >
-              <div className="experience-card flex items-baseline text-gray-400 p-3 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-10  duration-200 hover:bg-[#1c2b4074]">
-                <div className="left basis-1/5 text-xs font-medium  text-gray-500 pr-2">
-                  <div className="flex items-center">
-                    <span>2020</span>
-                    <span className="dash__ w-3 h-[0.07em]  bg-gray-500 mx-2"></span>
-                    <span>PRESENT</span>
-                  </div>
-                </div>
-                <div className="right basis-4/5">
-                  <div className="name text-white text-base font-medium">
-                    Freelancer Developer
-                  </div>
-                  <div className="role text-gray-500">
-                    Front End Developer & UI UX designer
-                  </div>
-                  <div className="description mt-3 text-sm">
-                    Build, style, and ship high-quality websites, design
-                    systems, mobile apps, and digital experiences for a diverse
-                    array of projects for clients including Asanbar Business and
-                    more.
-                  </div>
-                </div>
-              </div>
-              <div className="experience-card flex items-baseline text-gray-400 p-3 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-10 duration-200 hover:bg-[#1c2b4074]">
-                <div className="left basis-1/5 text-xs font-medium text-gray-500 pr-2">
-                  <div className="flex items-center">
-                    <span>2019</span>
-                    <span className="dash__ w-3 h-[0.07em] bg-gray-500 mx-2"></span>
-                    <span>2022</span>
-                  </div>
-                </div>
-                <div className="right basis-4/5">
-                  <div className="name text-white text-base font-medium">
-                    Startup Studio
-                  </div>
-                  <div className="role text-gray-500">
-                    Front-End Developer & UI/UX Collaborator
-                  </div>
-                  <div className="description mt-3 text-sm">
-                    Developed and collaborated on user interfaces for multiple
-                    early-stage startups, focusing on clean code, accessibility,
-                    and user experience across web and mobile platforms.
-                  </div>
-                </div>
-              </div>
-              <div className="experience-card flex items-baseline text-gray-400 p-3 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-10 duration-200 hover:bg-[#1c2b4074]">
-                <div className="left basis-1/5 text-xs font-medium text-gray-500 pr-2">
-                  <div className="flex items-center">
-                    <span>2018</span>
-                    <span className="dash__ w-3 h-[0.07em] bg-gray-500 mx-2"></span>
-                    <span>2021</span>
-                  </div>
-                </div>
-                <div className="right basis-4/5">
-                  <div className="name text-white text-base font-medium">
-                    Tech Agency
-                  </div>
-                  <div className="role text-gray-500">
-                    Front-End Developer & Performance Specialist
-                  </div>
-                  <div className="description mt-3 text-sm">
-                    Built responsive and performant web experiences for diverse
-                    clients, leveraging modern frameworks and optimization
-                    techniques to ensure fast loading times and smooth user
-                    interactions.
-                  </div>
-                </div>
-              </div>
-              <div className="experience-card flex items-baseline text-gray-400 p-3 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-10 duration-200 hover:bg-[#1c2b4074]">
-                <div className="left basis-1/5 text-xs font-medium text-gray-500 pr-2">
-                  <div className="flex items-center">
-                    <span>2017</span>
-                    <span className="dash__ w-3 h-[0.07em] bg-gray-500 mx-2"></span>
-                    <span>2020</span>
-                  </div>
-                </div>
-                <div className="right basis-4/5">
-                  <div className="name text-white text-base font-medium">
-                    E-commerce Startup
-                  </div>
-                  <div className="role text-gray-500">
-                    Front-End Developer & Accessibility Advocate
-                  </div>
-                  <div className="description mt-3 text-sm">
-                    Developed and maintained an accessible and user-friendly
-                    e-commerce platform, prioritizing inclusive design
-                    principles to ensure positive user experience for all
-                    abilities.
-                  </div>
-                </div>
-              </div>
+              {/* <div className="experience-card flex items-baseline text-gray-400 p-3 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-10  duration-200 hover:bg-[#1c2b4074]"> */}
+              <h3 className="text-white pb-10 tracking-wide ">EXPERIENCE</h3>
+
+              <ExperienceCard
+                startingDate={"2020"}
+                finishingDate={"PRESENT"}
+                role={"Freelancer Developer"}
+                exactRoleName={"Front End Developer & UI UX designer"}
+                description={
+                  "  Build, style, and ship high-quality websites, design systems, mobile apps, and digital experiences for a diversearray of projects for clients including Asanbar Business and more."
+                }
+              />
+              <ExperienceCard
+                startingDate={"2020"}
+                finishingDate={"PRESENT"}
+                role={"Freelancer Developer"}
+                exactRoleName={"Front End Developer & UI UX designer"}
+                description={
+                  "  Build, style, and ship high-quality websites, design systems, mobile apps, and digital experiences for a diversearray of projects for clients including Asanbar Business and more."
+                }
+              />
+              <ExperienceCard
+                startingDate={"2020"}
+                finishingDate={"PRESENT"}
+                role={"Freelancer Developer"}
+                exactRoleName={"Front End Developer & UI UX designer"}
+                description={
+                  "  Build, style, and ship high-quality websites, design systems, mobile apps, and digital experiences for a diversearray of projects for clients including Asanbar Business and more."
+                }
+              />
             </div>
-            <div ref={project} className="Project my-60 flex flex-col gap-1">
+            <div
+              ref={project}
+              className="Project pt-16 flex flex-col gap-1 pb-8"
+            >
+              <h3 className="text-white pb-10 tracking-wide ">PROJECTS</h3>
               <Link href={"/Asanbar"}>
                 <div className="project-card  flex justify-between items-center  text-gray-400 p-3 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-10  duration-200 hover:bg-[#1c2b4074] cursor-pointer group/project my-3">
                   <div className="left flex  gap-6">
