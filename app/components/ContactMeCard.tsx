@@ -1,6 +1,4 @@
 import Link from "next/link";
-import React from "react";
-
 function ContactMeCard({ name, icon, description, link }: any) {
   return (
     <Link href={link}>
