@@ -4,16 +4,16 @@ import React from "react";
 function ContactMeCard({ name, icon, description, link }: any) {
   return (
     <Link href={link}>
-      <div className="card flex flex-col px-20 ">
+      <div className="card flex flex-col  ">
         <div className="top flex items-center  gap-3">
           {icon}
-          <span>{name}</span>
+          <span className="font-bold">{name}</span>
           <svg
             stroke="currentColor"
             fill="currentColor"
             strokeWidth="0"
             viewBox="0 0 512 512"
-            height="1em"
+            height="em"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -26,7 +26,7 @@ function ContactMeCard({ name, icon, description, link }: any) {
             ></path>
           </svg>
         </div>
-        <div className="bottom">{description}</div>
+        <div className="bottom font-extralight mt-2">{description}</div>
       </div>
     </Link>
   );

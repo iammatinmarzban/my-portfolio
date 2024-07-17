@@ -14,6 +14,7 @@ export default function Home() {
   const experience = useRef<HTMLDivElement>(null);
   const project = useRef<HTMLDivElement>(null);
   const [isActive, setIsActive] = useState("about");
+  const [showContactMenu, setShowContactMenu] = useState(false);
 
   // Framer motion   back-light mouse-responsive-animation set up
   let mouseX = useMotionValue(0);
@@ -37,44 +38,24 @@ export default function Home() {
   return (
     <main className={inter.className}>
       {/* className="group/bg mx-auto text-center relative  inset-0 bg-[#051731] min-h-lvh min-w-max" */}
-      <div className="contact-me-menu fixed inset-0 bg-red-950 text-white">
-        <div className="content-inside">
-          <div className="text flex items-center justify-center pt-5  ">
-            {/* <svg
-              className="stroke-white"
-              stroke="currentColor"
-              fill="currentColor"
-              stroke-width="1"
-              viewBox="0 0 24 24"
-              height="1em"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill="none"
-                stroke="#000"
-                stroke-width="2"
-                d="M5,12 C3.343,12 2,10.657 2,9 C2,7.343 3.343,6 5,6 C6.657,6 8,7.343 8,9 C8,10.657 6.657,12 5,12 Z M9,18 L9,16 C9,13.7504 7.2128,12 4.964,12 L5.0184,12 C2.7688,12 1,13.7504 1,16 L1,18 M12,7 L24,7 M12,17 L22,17 M12,12 L19,12"
-              ></path>
-            </svg> */}
-            <svg
-              className="w-6 h-6 fill-white mr-2"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 576 512"
-            >
-              --!Font Awesome Free 6.6.0 by @fontawesome -
-              https://fontawesome.com License -
-              https://fontawesome.com/license/free Copyright 2024 Fonticons,
-              Inc.
-              <path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l448 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm80 256l64 0c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16L80 384c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32l128 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-128 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64l128 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-128 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64l128 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-128 0c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
-            </svg>
-            <span>Contact Links</span>+
-          </div>
-          <div className="card-container flex flex-col gap-9 mt-7">
-            <ContactMeCard
-              name="LinkedIn"
-              icon={
+      {true && (
+        <div
+          className={`contact-me-menu fixed inset-0 bg-[#030e1d] opacity-80 z-10 translate-y-full text-white   ${
+            showContactMenu && "translate-y-0 duration-100 "
+          }
+          `}
+        >
+          <div className="content-inside w-9/12 mx-auto mt-8 h-full ">
+            <div className="text flex items-center justify-between pt-5 ">
+              <div className="left flex font-extralight items-center">
+                <span>Contact Links</span>
+              </div>
+
+              <div>
                 <svg
+                  onClick={() => {
+                    setShowContactMenu(false);
+                  }}
                   stroke="currentColor"
                   fill="currentColor"
                   stroke-width="0"
@@ -83,90 +64,150 @@ export default function Home() {
                   width="1em"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M444.17 32H70.28C49.85 32 32 46.7 32 66.89v374.72C32 461.91 49.85 480 70.28 480h373.78c20.54 0 35.94-18.21 35.94-38.39V66.89C480.12 46.7 464.6 32 444.17 32zm-273.3 373.43h-64.18V205.88h64.18zM141 175.54h-.46c-20.54 0-33.84-15.29-33.84-34.43 0-19.49 13.65-34.42 34.65-34.42s33.85 14.82 34.31 34.42c-.01 19.14-13.31 34.43-34.66 34.43zm264.43 229.89h-64.18V296.32c0-26.14-9.34-44-32.56-44-17.74 0-28.24 12-32.91 23.69-1.75 4.2-2.22 9.92-2.22 15.76v113.66h-64.18V205.88h64.18v27.77c9.34-13.3 23.93-32.44 57.88-32.44 42.13 0 74 27.77 74 87.64z"></path>
+                  <path d="M400 145.49L366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49z"></path>
                 </svg>
-              }
-              description="Lets geta in touch!"
-              link="https://www.linkedin.com/in/matin-marzban-300371214"
-            />
-            <ContactMeCard
-              name={"github"}
-              icon={
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 512 512"
-                  height="1em"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M256 32C132.3 32 32 134.9 32 261.7c0 101.5 64.2 187.5 153.2 217.9a17.56 17.56 0 003.8.4c8.3 0 11.5-6.1 11.5-11.4 0-5.5-.2-19.9-.3-39.1a102.4 102.4 0 01-22.6 2.7c-43.1 0-52.9-33.5-52.9-33.5-10.2-26.5-24.9-33.6-24.9-33.6-19.5-13.7-.1-14.1 1.4-14.1h.1c22.5 2 34.3 23.8 34.3 23.8 11.2 19.6 26.2 25.1 39.6 25.1a63 63 0 0025.6-6c2-14.8 7.8-24.9 14.2-30.7-49.7-5.8-102-25.5-102-113.5 0-25.1 8.7-45.6 23-61.6-2.3-5.8-10-29.2 2.2-60.8a18.64 18.64 0 015-.5c8.1 0 26.4 3.1 56.6 24.1a208.21 208.21 0 01112.2 0c30.2-21 48.5-24.1 56.6-24.1a18.64 18.64 0 015 .5c12.2 31.6 4.5 55 2.2 60.8 14.3 16.1 23 36.6 23 61.6 0 88.2-52.4 107.6-102.3 113.3 8 7.1 15.2 21.1 15.2 42.5 0 30.7-.3 55.5-.3 63 0 5.4 3.1 11.5 11.4 11.5a19.35 19.35 0 004-.4C415.9 449.2 480 363.1 480 261.7 480 134.9 379.7 32 256 32z"></path>
-                </svg>
-              }
-              description={"Take a closer look of my code!"}
-              link={"https://www.github.com/iammatinmarzban"}
-            />
-            <div className="Email-card">
-              <div className="card flex flex-col px-20 ">
-                <div className="top flex items-center  gap-3">
+              </div>
+            </div>
+            <div className="card-container flex flex-col gap-20 mt-12 justify-evenly w-4/5">
+              <ContactMeCard
+                name="LinkedIn"
+                icon={
                   <svg
                     stroke="currentColor"
                     fill="currentColor"
                     stroke-width="0"
                     viewBox="0 0 512 512"
-                    height="1em"
-                    width="1em"
+                    height="2em"
+                    width="2em"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <rect
-                      width="416"
-                      height="320"
-                      x="48"
-                      y="96"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="32"
-                      rx="40"
-                      ry="40"
-                    ></rect>
-                    <path
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="32"
-                      d="M112 160l144 112 144-112"
-                    ></path>
+                    <path d="M444.17 32H70.28C49.85 32 32 46.7 32 66.89v374.72C32 461.91 49.85 480 70.28 480h373.78c20.54 0 35.94-18.21 35.94-38.39V66.89C480.12 46.7 464.6 32 444.17 32zm-273.3 373.43h-64.18V205.88h64.18zM141 175.54h-.46c-20.54 0-33.84-15.29-33.84-34.43 0-19.49 13.65-34.42 34.65-34.42s33.85 14.82 34.31 34.42c-.01 19.14-13.31 34.43-34.66 34.43zm264.43 229.89h-64.18V296.32c0-26.14-9.34-44-32.56-44-17.74 0-28.24 12-32.91 23.69-1.75 4.2-2.22 9.92-2.22 15.76v113.66h-64.18V205.88h64.18v27.77c9.34-13.3 23.93-32.44 57.88-32.44 42.13 0 74 27.77 74 87.64z"></path>
                   </svg>
-                  <span>Email</span>
+                }
+                description="Lets get in touch!"
+                link="https://www.linkedin.com/in/matin-marzban-300371214"
+              />
+              <ContactMeCard
+                name={"github"}
+                icon={
                   <svg
                     stroke="currentColor"
                     fill="currentColor"
-                    strokeWidth="0"
+                    stroke-width="0"
                     viewBox="0 0 512 512"
-                    height="1em"
-                    width="1em"
+                    height="2em"
+                    width="2em"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
+                    <path d="M256 32C132.3 32 32 134.9 32 261.7c0 101.5 64.2 187.5 153.2 217.9a17.56 17.56 0 003.8.4c8.3 0 11.5-6.1 11.5-11.4 0-5.5-.2-19.9-.3-39.1a102.4 102.4 0 01-22.6 2.7c-43.1 0-52.9-33.5-52.9-33.5-10.2-26.5-24.9-33.6-24.9-33.6-19.5-13.7-.1-14.1 1.4-14.1h.1c22.5 2 34.3 23.8 34.3 23.8 11.2 19.6 26.2 25.1 39.6 25.1a63 63 0 0025.6-6c2-14.8 7.8-24.9 14.2-30.7-49.7-5.8-102-25.5-102-113.5 0-25.1 8.7-45.6 23-61.6-2.3-5.8-10-29.2 2.2-60.8a18.64 18.64 0 015-.5c8.1 0 26.4 3.1 56.6 24.1a208.21 208.21 0 01112.2 0c30.2-21 48.5-24.1 56.6-24.1a18.64 18.64 0 015 .5c12.2 31.6 4.5 55 2.2 60.8 14.3 16.1 23 36.6 23 61.6 0 88.2-52.4 107.6-102.3 113.3 8 7.1 15.2 21.1 15.2 42.5 0 30.7-.3 55.5-.3 63 0 5.4 3.1 11.5 11.4 11.5a19.35 19.35 0 004-.4C415.9 449.2 480 363.1 480 261.7 480 134.9 379.7 32 256 32z"></path>
+                  </svg>
+                }
+                description={"Take a closer look of my code!"}
+                link={"https://www.github.com/iammatinmarzban"}
+              />
+              <div className="Email-card">
+                <div className="card flex flex-col  ">
+                  <div className="top flex items-center  gap-3">
+                    <svg
+                      stroke="currentColor"
+                      fill="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 512 512"
+                      height="2em"
+                      width="2em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        width="416"
+                        height="320"
+                        x="48"
+                        y="96"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="32"
+                        rx="40"
+                        ry="40"
+                      ></rect>
+                      <path
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="32"
+                        d="M112 160l144 112 144-112"
+                      ></path>
+                    </svg>
+                    <span className="font-bold">Email</span>
+                    <svg
+                      stroke="currentColor"
+                      fill="currentColor"
+                      strokeWidth="0"
+                      viewBox="0 0 512 512"
+                      height="1em"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="48"
+                        d="M268 112l144 144-144 144m124-144H100"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div className="bottom font-extralight">
+                    <span>matinmarzan1271@gmail.com</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="phone-number-card">
+                <div className="card flex flex-col  ">
+                  <div className="top flex items-center  gap-3">
+                    <svg
+                      stroke="currentColor"
                       fill="none"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      stroke-width="48"
-                      d="M268 112l144 144-144 144m124-144H100"
-                    ></path>
-                  </svg>
-                </div>
-                <div className="bottom">
-                  <span>matinmarzan1271@gmail.com</span>
+                      height="2em"
+                      width="2em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                      <path d="M14.05 2a9 9 0 0 1 8 7.94"></path>
+                      <path d="M14.05 6A5 5 0 0 1 18 10"></path>
+                    </svg>
+                    <span className="font-bold">Phone Number</span>
+                    <svg
+                      stroke="currentColor"
+                      fill="currentColor"
+                      strokeWidth="0"
+                      viewBox="0 0 512 512"
+                      height="1em"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="48"
+                        d="M268 112l144 144-144 144m124-144H100"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div className="bottom font-extralight">
+                    <span>09175271271</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
+      )}
       <div
         onMouseMove={handleMouseMove}
         className="group/bg mx-auto text-center  bg-[#051731] "
@@ -178,14 +219,19 @@ export default function Home() {
 
         {/* display it's set to hidden   */}
         <motion.div
-          className="pointer-events-none  inset-0 absolute group-hover/bg:opacity-90 transition duration-300 hidden"
+          className=" inset-0 absolute group-hover/bg:opacity-80 transition duration-300 hidden"
           style={{
             background: useMotionTemplate`radial-gradient(circle 500px at ${mouseX}px ${mouseY}px ,rgb(13 165 233 / 0.1),transparent 80%)`,
           }}
         />
         {/* page-content-text flex justify-between text-gray-400 max-w-screen-xl mx-auto pt-24 items-start  */}
 
-        <div className="page-content-text  md:flex justify-between text-gray-400  mx-auto pt-14  md:pt-24 text-sm items-start px-5">
+        {/* Hardcoded BLUR property to CSS */}
+        <div
+          className={`page-content-text  md:flex justify-between text-gray-400  mx-auto pt-14  md:pt-24 text-sm items-start px-5 ${
+            showContactMenu ? "blur-sm" : ""
+          }`}
+        >
           {/* <div className="left text-left basis-2/5 sticky  top-24"> */}
           <div className="left-part-large-screen text-left">
             {/* <div className="name font-bold text-5xl text-slate-200 "> */}
@@ -201,42 +247,48 @@ export default function Home() {
                 experiences.
               </p>
             </div>
-            <div className="contact-links-mobile bg-white fixed bottom-0 left-0 w-full py-4">
-              <div className="text sticky bottom-0  flex items-center justify-center text-black  ">
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 24 24"
-                  height="1em"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill="none"
-                    stroke="#000"
-                    stroke-width="2"
-                    d="M5,12 C3.343,12 2,10.657 2,9 C2,7.343 3.343,6 5,6 C6.657,6 8,7.343 8,9 C8,10.657 6.657,12 5,12 Z M9,18 L9,16 C9,13.7504 7.2128,12 4.964,12 L5.0184,12 C2.7688,12 1,13.7504 1,16 L1,18 M12,7 L24,7 M12,17 L22,17 M12,12 L19,12"
-                  ></path>
-                </svg>
-                <span>contact links</span>
-              </div>
-              <div className="contact_me  flex-col  gap-5 mt-5 hidden">
-                <div className="Email flex gap-2 items-center  text-gray-400 fill-gray-400  border-[1px] border-transparent rounded-md py-3 ">
-                  <div className="email-text flex flex-col">
-                    <h3>Email</h3>
-                    <h3 className="hover:underline">
-                      matinmarzban1271@gmail.com
-                    </h3>
+            {!showContactMenu && (
+              <div
+                onClick={() => {
+                  setShowContactMenu(true);
+                }}
+                className="contact-links-mobile bg-white fixed bottom-0 left-0 w-full py-4 "
+              >
+                <div className="text sticky bottom-0  flex items-center justify-center text-black  ">
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill="none"
+                      stroke="#000"
+                      stroke-width="2"
+                      d="M5,12 C3.343,12 2,10.657 2,9 C2,7.343 3.343,6 5,6 C6.657,6 8,7.343 8,9 C8,10.657 6.657,12 5,12 Z M9,18 L9,16 C9,13.7504 7.2128,12 4.964,12 L5.0184,12 C2.7688,12 1,13.7504 1,16 L1,18 M12,7 L24,7 M12,17 L22,17 M12,12 L19,12"
+                    ></path>
+                  </svg>
+                  <span>contact links</span>
+                </div>
+                <div className="contact_me  flex-col  gap-5 mt-5 hidden">
+                  <div className="Email flex gap-2 items-center  text-gray-400 fill-gray-400  border-[1px] border-transparent rounded-md py-3 ">
+                    <div className="email-text flex flex-col">
+                      <h3>Email</h3>
+                      <h3 className="hover:underline">
+                        matinmarzban1271@gmail.com
+                      </h3>
+                    </div>
+                  </div>
+                  <div className="phone_number flex flex-col  fill-gray-400 text-gray-400 gap-2  border-[1px] border-transparent">
+                    <h3>Call</h3>
+                    <h3 className="hover:underline">+98-9175271271</h3>
                   </div>
                 </div>
-                <div className="phone_number flex flex-col  fill-gray-400 text-gray-400 gap-2  border-[1px] border-transparent">
-                  <h3>Call</h3>
-                  <h3 className="hover:underline">+98-9175271271</h3>
-                </div>
               </div>
-            </div>
-
+            )}
             {/* "navbar my-14 text-gray-400 uppercase font-bold flex flex-col gap-7 text-xs " */}
             {/*  *****Navbar is Hidden*****  */}
             <div className="navbar my-14 text-gray-400 uppercase font-bold md:flex flex-col gap-7 text-xs hidden">
