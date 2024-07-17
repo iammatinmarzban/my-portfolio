@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <main className={inter.className}>
       {/* className="group/bg mx-auto text-center relative  inset-0 bg-[#051731] min-h-lvh min-w-max" */}
-      {true && (
+      {showContactMenu && (
         <div
           className={`contact-me-menu fixed inset-0 bg-[#030e1d] opacity-80 z-10 translate-y-full text-white   ${
             showContactMenu && "translate-y-0 duration-100 "
