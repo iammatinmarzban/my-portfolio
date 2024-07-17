@@ -304,7 +304,6 @@ export default function Home() {
                   onClick={() => {
                     handleNavClick(about);
                     setIsActive("about");
-                    // navigationHandler(about);
                   }}
                   className={`group-hover/about:text-white ${
                     isActive == "about" ? "text-white" : "text-gray-400"
