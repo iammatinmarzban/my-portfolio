@@ -40,7 +40,7 @@ export default function Home() {
       {/* className="group/bg mx-auto text-center relative  inset-0 bg-[#051731] min-h-lvh min-w-max" */}
       {true && (
         <div
-          className={`contact-me-menu fixed inset-0 bg-[#030e1d] opacity-80  z-10 text-white  h-screen  ${
+          className={`contact-me-menu fixed inset-0 bg-[#030e1d] opacity-80  z-10 text-white  h-dvh  ${
             showContactMenu
               ? "translate-y-0 duration-300"
               : "  translate-y-full "
