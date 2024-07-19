@@ -43,7 +43,7 @@ export default function Home() {
           className={`contact-me-menu fixed inset-0 bg-[#030e1d] opacity-80  z-10 text-white   ${
             showContactMenu
               ? "translate-y-0 duration-300"
-              : "  -translate-y-full "
+              : "  translate-y-full "
           }
           `}
         >
