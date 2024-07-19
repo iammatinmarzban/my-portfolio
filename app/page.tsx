@@ -42,7 +42,7 @@ export default function Home() {
         <div
           className={`contact-me-menu fixed inset-0 bg-[#030e1d] opacity-80  z-10 text-white   ${
             showContactMenu
-              ? "translate-y-0 duration-100"
+              ? "translate-y-0 duration-300"
               : "  -translate-y-full "
           }
           `}
@@ -254,10 +254,11 @@ export default function Home() {
                 onClick={() => {
                   setShowContactMenu(true);
                 }}
-                className="contact-links-mobile bg-white fixed bottom-0 left-0 w-full py-4 "
+                className="contact-links-mobile bg-white fixed bottom-0 left-0 w-full py-6 "
               >
-                <div className="text sticky bottom-0  flex items-center justify-center text-black  ">
+                <div className="text sticky bottom-0 gap-2 flex items-center justify-center text-black  text-base ">
                   <svg
+                    className=""
                     stroke="currentColor"
                     fill="currentColor"
                     stroke-width="0"
@@ -273,6 +274,7 @@ export default function Home() {
                       d="M5,12 C3.343,12 2,10.657 2,9 C2,7.343 3.343,6 5,6 C6.657,6 8,7.343 8,9 C8,10.657 6.657,12 5,12 Z M9,18 L9,16 C9,13.7504 7.2128,12 4.964,12 L5.0184,12 C2.7688,12 1,13.7504 1,16 L1,18 M12,7 L24,7 M12,17 L22,17 M12,12 L19,12"
                     ></path>
                   </svg>
+                  {/* <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span> */}
                   <span>contact links</span>
                 </div>
                 <div className="contact_me  flex-col  gap-5 mt-5 hidden">
@@ -515,7 +517,7 @@ export default function Home() {
             </div>
             <div
               ref={project}
-              className="Project pt-16 flex flex-col gap-1 pb-8"
+              className="Project pt-16 flex flex-col gap-1 pb-12"
             >
               <h3 className="text-white pb-10 tracking-wide ">PROJECTS</h3>
               <Link href={"/Asanbar"}>
