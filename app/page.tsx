@@ -250,14 +250,15 @@ export default function Home() {
               </p>
             </div>
             {!showContactMenu && (
-              <div
-                onClick={() => {
-                  setShowContactMenu(true);
-                }}
-                className="contact-links-mobile bg-white fixed bottom-0 left-0 w-full py-6 "
-              >
-                <div className="text sticky bottom-0 gap-2 flex items-center justify-center text-black  text-base ">
-                  <svg
+              <div className="relative">
+                <div
+                  onClick={() => {
+                    setShowContactMenu(true);
+                  }}
+                  className="contact-links-mobile bottom-0 left-0  w-full py-6 bg-gray-500 backdrop-blur- fixed  "
+                >
+                  <div className="text-inside  flex items-center justify-center text-white text-base  ">
+                    {/* <svg
                     className=""
                     stroke="currentColor"
                     fill="currentColor"
@@ -266,33 +267,35 @@ export default function Home() {
                     height="1em"
                     width="1em"
                     xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill="none"
-                      stroke="#000"
-                      stroke-width="2"
-                      d="M5,12 C3.343,12 2,10.657 2,9 C2,7.343 3.343,6 5,6 C6.657,6 8,7.343 8,9 C8,10.657 6.657,12 5,12 Z M9,18 L9,16 C9,13.7504 7.2128,12 4.964,12 L5.0184,12 C2.7688,12 1,13.7504 1,16 L1,18 M12,7 L24,7 M12,17 L22,17 M12,12 L19,12"
-                    ></path>
-                  </svg>
-                  {/* <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span> */}
-                  <span>contact links</span>
-                </div>
-                <div className="contact_me  flex-col  gap-5 mt-5 hidden">
-                  <div className="Email flex gap-2 items-center  text-gray-400 fill-gray-400  border-[1px] border-transparent rounded-md py-3 ">
-                    <div className="email-text flex flex-col">
-                      <h3>Email</h3>
-                      <h3 className="hover:underline">
-                        matinmarzban1271@gmail.com
-                      </h3>
-                    </div>
-                  </div>
-                  <div className="phone_number flex flex-col  fill-gray-400 text-gray-400 gap-2  border-[1px] border-transparent">
-                    <h3>Call</h3>
-                    <h3 className="hover:underline">+98-9175271271</h3>
+                    >
+                    <path÷
+                    fill="none"
+                    stroke="#000"
+                    stroke-width="2"
+                    d="M5,12 C3.343,12 2,10.657 2,9 C2,7.343 3.343,6 5,6 C6.657,6 8,7.343 8,9 C8,10.657 6.657,12 5,12 Z M9,18 L9,16 C9,13.7504 7.2128,12 4.964,12 L5.0184,12 C2.7688,12 1,13.7504 1,16 L1,18 M12,7 L24,7 M12,17 L22,17 M12,12 L19,12"
+                    ></path÷>
+                    </svg> */}
+                    {/* <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span> */}
+                    <span className="">Contact Links</span>
                   </div>
                 </div>
               </div>
             )}
+            <div className="contact_me  flex-col  gap-5 mt-5 hidden">
+              <div className="Email flex gap-2 items-center  text-gray-400 fill-gray-400  border-[1px] border-transparent rounded-md py-3 ">
+                <div className="email-text flex flex-col">
+                  <h3>Email</h3>
+                  <h3 className="hover:underline">
+                    matinmarzban1271@gmail.com
+                  </h3>
+                </div>
+              </div>
+              <div className="phone_number flex flex-col  fill-gray-400 text-gray-400 gap-2  border-[1px] border-transparent">
+                <h3>Call</h3>
+                <h3 className="hover:underline">+98-9175271271</h3>
+              </div>
+            </div>
+
             {/* "navbar my-14 text-gray-400 uppercase font-bold flex flex-col gap-7 text-xs " */}
             {/*  *****Navbar is Hidden*****  */}
             <div className="navbar my-14 text-gray-400 uppercase font-bold md:flex flex-col gap-7 text-xs hidden">
@@ -517,7 +520,7 @@ export default function Home() {
             </div>
             <div
               ref={project}
-              className="Project pt-16 flex flex-col gap-1 pb-12"
+              className="Project pt-16 flex flex-col gap-1 pb-16"
             >
               <h3 className="text-white pb-10 tracking-wide ">PROJECTS</h3>
               <Link href={"/Asanbar"}>
