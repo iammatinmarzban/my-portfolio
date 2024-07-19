@@ -40,7 +40,7 @@ export default function Home() {
       {/* className="group/bg mx-auto text-center relative  inset-0 bg-[#051731] min-h-lvh min-w-max" */}
       {true && (
         <div
-          className={`contact-me-menu fixed inset-0 bg-[#030e1d] opacity-80  z-10 text-white  h-dvh  ${
+          className={`contact-me-menu fixed inset-0 bg-[#030e1d] opacity-80  z-10 text-white  h-dvh   ${
             showContactMenu
               ? "translate-y-0 duration-300"
               : "  translate-y-full "
@@ -255,7 +255,7 @@ export default function Home() {
                   onClick={() => {
                     setShowContactMenu(true);
                   }}
-                  className="contact-links-mobile bottom-0 left-0  w-full py-6 bg-gray-500 backdrop-blur- fixed  "
+                  className="contact-links-mobile bottom-0 left-0  w-full py-6 bg-[#deb887] backdrop-blur-md fixed"
                 >
                   <div className="text-inside  flex items-center justify-center text-white text-base  ">
                     {/* <svg
