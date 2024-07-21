@@ -27,7 +27,7 @@ export default function Home() {
     mouseX.set(xPosition);
     mouseY.set(yPostition);
   }
-
+  ``;
   // How does this work?
   // How does it know where to go?
   // Added a {ref} to the parts intended to scroll to
@@ -202,7 +202,10 @@ export default function Home() {
                     </svg>
                   </div>
                   <div className="bottom font-extralight">
-                    <span>09175271271</span>
+                    <div>
+                      <a href="tel:09175271271">09175271271</a>
+                    </div>
+                    {/* <span>09175271271</span> */}
                   </div>
                 </div>
               </div>
@@ -255,26 +258,9 @@ export default function Home() {
                   onClick={() => {
                     setShowContactMenu(true);
                   }}
-                  className="contact-links-mobile bottom-0 left-0  w-full py-6 bg-[#deb887] backdrop-blur-md fixed"
+                  className="contact-links-mobile bottom-0 left-0  w-full py-6 border-t-[1px] border-gray-50 backdrop-blur-md fixed"
                 >
-                  <div className="text-inside  flex items-center justify-center text-white text-base  ">
-                    {/* <svg
-                    className=""
-                    stroke="currentColor"
-                    fill="currentColor"
-                    stroke-width="0"
-                    viewBox="0 0 24 24"
-                    height="1em"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                    >
-                    <path÷
-                    fill="none"
-                    stroke="#000"
-                    stroke-width="2"
-                    d="M5,12 C3.343,12 2,10.657 2,9 C2,7.343 3.343,6 5,6 C6.657,6 8,7.343 8,9 C8,10.657 6.657,12 5,12 Z M9,18 L9,16 C9,13.7504 7.2128,12 4.964,12 L5.0184,12 C2.7688,12 1,13.7504 1,16 L1,18 M12,7 L24,7 M12,17 L22,17 M12,12 L19,12"
-                    ></path÷>
-                    </svg> */}
+                  <div className="text-inside  flex items-center justify-center text-gray-50 text-xl ">
                     {/* <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span> */}
                     <span className="">Contact Links</span>
                   </div>
