@@ -2,6 +2,7 @@
 import { useMotionTemplate, useMotionValue, motion } from "framer-motion";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import { animated, useSpring } from "@react-spring/web";
 // import navigationHandler from "./navigationHandler";
 
 import { MouseEvent, useRef, useState } from "react";
@@ -15,6 +16,11 @@ export default function Home() {
   const project = useRef<HTMLDivElement>(null);
   const [isActive, setIsActive] = useState("about");
   const [showContactMenu, setShowContactMenu] = useState(false);
+
+  const springs = useSpring({
+    from: { x: 0 },
+    to: { x: 100 },
+  });
 
   // Framer motion   back-light mouse-responsive-animation set up
   let mouseX = useMotionValue(0);
@@ -252,21 +258,32 @@ export default function Home() {
                 experiences.
               </p>
             </div>
-            {!showContactMenu && (
-              <div className="relative">
-                <div
+
+            {/* {!showContactMenu && ( */}
+            <div className="fixed bottom-3 right-3">
+              <animated.div
+                style={{
+                  width: 80,
+                  height: 80,
+                  background: "#ff6d6d",
+                  borderRadius: 8,
+                }}
+              />
+              {/* <div
                   onClick={() => {
                     setShowContactMenu(true);
                   }}
                   className="contact-links-mobile bottom-0 left-0  w-full py-6 border-t-[1px] border-gray-50 backdrop-blur-md fixed"
-                >
-                  <div className="text-inside  flex items-center justify-center text-gray-50 text-xl ">
-                    {/* <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span> */}
+                > */}
+              {/* <div className="text-inside  flex items-center justify-center text-gray-50 text-xl ">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
                     <span className="">Contact Links</span>
                   </div>
                 </div>
-              </div>
-            )}
+              </div> */}
+              {/* )} */}
+            </div>
+
             <div className="contact_me  flex-col  gap-5 mt-5 hidden">
               <div className="Email flex gap-2 items-center  text-gray-400 fill-gray-400  border-[1px] border-transparent rounded-md py-3 ">
                 <div className="email-text flex flex-col">
