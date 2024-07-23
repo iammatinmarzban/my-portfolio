@@ -258,30 +258,36 @@ export default function Home() {
                 experiences.
               </p>
             </div>
+            <div className="conatact-icon-moblie fixed bottom-3 right-3  w-10 h-10 rounded">
+              {/* <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="white"
+                className=""
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+                />
+              </svg> */}
 
-            {/* {!showContactMenu && ( */}
-            <div className="fixed bottom-3 right-3">
-              <animated.div
-                style={{
-                  width: 80,
-                  height: 80,
-                  background: "#ff6d6d",
-                  borderRadius: 8,
-                }}
-              />
-              {/* <div
-                  onClick={() => {
-                    setShowContactMenu(true);
-                  }}
-                  className="contact-links-mobile bottom-0 left-0  w-full py-6 border-t-[1px] border-gray-50 backdrop-blur-md fixed"
-                > */}
-              {/* <div className="text-inside  flex items-center justify-center text-gray-50 text-xl ">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                    <span className="">Contact Links</span>
+              {!showContactMenu && (
+                <div className="fixed bottom-3 right-3">
+                  <div
+                    onClick={() => {
+                      setShowContactMenu(true);
+                    }}
+                    className="contact-links-mobile bottom-0 left-0  w-full py-6 border-t-[1px] border-gray-50 backdrop-blur-md fixed"
+                  >
+                    <div className="text-inside  flex items-center justify-center text-gray-50 text-xl ">
+                      <span className="">Contact Links</span>
+                    </div>
                   </div>
                 </div>
-              </div> */}
-              {/* )} */}
+              )}
             </div>
 
             <div className="contact_me  flex-col  gap-5 mt-5 hidden">

@@ -16,3 +16,25 @@
     padding-inline: 2px;
 }
 
+@keyframes slide-in {
+
+    20%{
+        transform: rotateY(75deg);
+
+    }
+    40%{
+        transform: rotateY(150deg);
+    }
+    60%{
+        
+        
+        transform: rotateY(280deg);
+    }
+    80%{
+        transform: rotateY(320deg );
+    }
+
+}
+.conatact-icon-moblie>svg{
+    animation:slide-in 5000ms linear infinite;
+}
