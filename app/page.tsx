@@ -275,12 +275,12 @@ export default function Home() {
               </svg> */}
 
               {!showContactMenu && (
-                <div className="lg:hidden">
+                <div className="">
                   <div
                     onClick={() => {
                       setShowContactMenu(true);
                     }}
-                    className="contact-links-mobile bottom-0 left-0  w-full py-6 border-t-[1px] border-gray-50 backdrop-blur-md fixed "
+                    className="contact-links-mobile bottom-0 left-0  w-full py-6 border-t-[1px] border-gray-50 backdrop-blur-md lg:hidden fixed "
                   >
                     <div className="text-inside  flex items-center justify-center text-gray-50 text-xl ">
                       <span className="">Contact Links</span>
