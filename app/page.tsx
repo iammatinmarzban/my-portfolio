@@ -221,7 +221,7 @@ export default function Home() {
       )}
       <div
         onMouseMove={handleMouseMove}
-        className="group/bg mx-auto text-center  bg-[#051731] "
+        className="group/bg mx-auto text-center relative bg-[#051731] "
       >
         {/*  apart of framer motion package 
              it's set to the full screen   creating the background we want
@@ -230,7 +230,7 @@ export default function Home() {
 
         {/* display it's set to hidden   */}
         <motion.div
-          className=" inset-0 absolute group-hover/bg:opacity-80 transition duration-300 hidden"
+          className=" absolute top-0 right-0 left-0 bottom-0  group-hover/bg:opacity-80  duration-300 hidden lg:block "
           style={{
             background: useMotionTemplate`radial-gradient(circle 500px at ${mouseX}px ${mouseY}px ,rgb(13 165 233 / 0.1),transparent 80%)`,
           }}
@@ -239,12 +239,12 @@ export default function Home() {
 
         {/* Hardcoded BLUR property to CSS */}
         <div
-          className={`page-content-text  md:flex justify-between text-gray-400  mx-auto pt-14  md:pt-24 text-sm items-start px-5 ${
+          className={`page-content-text  lg:flex justify-between text-gray-400  mx-auto pt-14  md:pt-24 text-sm items-start px-5 ${
             showContactMenu ? "blur-sm" : ""
           }`}
         >
           {/* <div className="left text-left basis-2/5 sticky  top-24"> */}
-          <div className="left-part-large-screen text-left">
+          <div className="left-part-large-screen text-left lg:sticky top-24">
             {/* <div className="name font-bold text-5xl text-slate-200 "> */}
             <div className="name font-bold text-3xl text-slate-200 ">
               <h1>Matin Marzban</h1>
@@ -275,12 +275,12 @@ export default function Home() {
               </svg> */}
 
               {!showContactMenu && (
-                <div className="fixed bottom-3 right-3">
+                <div className="lg:hidden">
                   <div
                     onClick={() => {
                       setShowContactMenu(true);
                     }}
-                    className="contact-links-mobile bottom-0 left-0  w-full py-6 border-t-[1px] border-gray-50 backdrop-blur-md fixed"
+                    className="contact-links-mobile bottom-0 left-0  w-full py-6 border-t-[1px] border-gray-50 backdrop-blur-md fixed "
                   >
                     <div className="text-inside  flex items-center justify-center text-gray-50 text-xl ">
                       <span className="">Contact Links</span>
@@ -307,7 +307,7 @@ export default function Home() {
 
             {/* "navbar my-14 text-gray-400 uppercase font-bold flex flex-col gap-7 text-xs " */}
             {/*  *****Navbar is Hidden*****  */}
-            <div className="navbar my-14 text-gray-400 uppercase font-bold md:flex flex-col gap-7 text-xs hidden">
+            <div className="navbar my-14 text-gray-400 uppercase font-bold lg:flex flex-col gap-7 text-xs hidden ">
               <div className="navbar-item flex items-center about gap-2 group/about cursor-pointer max-w-min">
                 <span
                   className={`w-8 h-[0.1em] bg-gray-400 group-hover/about:bg-white group-hover/about:w-12 duration-150 ${
@@ -373,7 +373,7 @@ export default function Home() {
               </div>
             </div>
             {/* <div className="contact_me flex flex-col  gap-5 mt-10 text-xs  "> */}
-            <div className="contact_me-large-screen  flex-col  gap-5 mt-10 text-xs hidden  ">
+            <div className="contact_me-large-screen md: flex-col  gap-5 mt-10 text-xs hidden  ">
               <div className="Email flex gap-2 items-center  text-gray-400 fill-gray-400 border-2 border-transparent rounded-md py-3 ">
                 <div className="email-text flex flex-col">
                   <h3>Email</h3>
@@ -390,7 +390,7 @@ export default function Home() {
 
             {/* <div className="linkedIcons flex gap-6 mt-16"> */}
             {/* Linked Icons is **HIDDEN** */}
-            <div className="linkedIcons hidden  gap-6 mt-16">
+            <div className="linkedIcons lg:flex gap-6 mt-16 hidden">
               <a href="https://www.github.com/iammatinmarzban">
                 <svg
                   className="w-6 h-6 fill-gray-400"
