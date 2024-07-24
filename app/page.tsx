@@ -1,8 +1,9 @@
 "use client";
+
 import { useMotionTemplate, useMotionValue, motion } from "framer-motion";
 import { Inter } from "next/font/google";
 import Link from "next/link";
-import { animated, useSpring } from "@react-spring/web";
+
 // import navigationHandler from "./navigationHandler";
 
 import { MouseEvent, useRef, useState } from "react";
@@ -16,11 +17,6 @@ export default function Home() {
   const project = useRef<HTMLDivElement>(null);
   const [isActive, setIsActive] = useState("about");
   const [showContactMenu, setShowContactMenu] = useState(false);
-
-  const springs = useSpring({
-    from: { x: 0 },
-    to: { x: 100 },
-  });
 
   // Framer motion   back-light mouse-responsive-animation set up
   let mouseX = useMotionValue(0);
@@ -114,106 +110,108 @@ export default function Home() {
                 link={"https://www.github.com/iammatinmarzban"}
               />
               <div className="Email-card">
-                <div className="card flex flex-col  ">
-                  <div className="top flex items-center  gap-3">
-                    <svg
-                      stroke="currentColor"
-                      fill="currentColor"
-                      stroke-width="0"
-                      viewBox="0 0 512 512"
-                      height="2em"
-                      width="2em"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect
-                        width="416"
-                        height="320"
-                        x="48"
-                        y="96"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="32"
-                        rx="40"
-                        ry="40"
-                      ></rect>
-                      <path
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="32"
-                        d="M112 160l144 112 144-112"
-                      ></path>
-                    </svg>
-                    <span className="font-bold">Email</span>
-                    <svg
-                      stroke="currentColor"
-                      fill="currentColor"
-                      strokeWidth="0"
-                      viewBox="0 0 512 512"
-                      height="1em"
-                      width="1em"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="48"
-                        d="M268 112l144 144-144 144m124-144H100"
-                      ></path>
-                    </svg>
+                <a href="mailto:matinmarzban1271@Gamil.com">
+                  <div className="card flex flex-col  ">
+                    <div className="top flex items-center  gap-3">
+                      <svg
+                        stroke="currentColor"
+                        fill="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 512 512"
+                        height="2em"
+                        width="2em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect
+                          width="416"
+                          height="320"
+                          x="48"
+                          y="96"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="32"
+                          rx="40"
+                          ry="40"
+                        ></rect>
+                        <path
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="32"
+                          d="M112 160l144 112 144-112"
+                        ></path>
+                      </svg>
+                      <span className="font-bold">Email</span>
+                      <svg
+                        stroke="currentColor"
+                        fill="currentColor"
+                        strokeWidth="0"
+                        viewBox="0 0 512 512"
+                        height="1em"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="48"
+                          d="M268 112l144 144-144 144m124-144H100"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div className="bottom font-extralight">
+                      <span>matinmarzban1271@gmail.com</span>
+                    </div>
                   </div>
-                  <div className="bottom font-extralight">
-                    <span>matinmarzan1271@gmail.com</span>
-                  </div>
-                </div>
+                </a>
               </div>
 
               <div className="phone-number-card">
-                <div className="card flex flex-col  ">
-                  <div className="top flex items-center  gap-3">
-                    <svg
-                      stroke="currentColor"
-                      fill="none"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      height="2em"
-                      width="2em"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                      <path d="M14.05 2a9 9 0 0 1 8 7.94"></path>
-                      <path d="M14.05 6A5 5 0 0 1 18 10"></path>
-                    </svg>
-                    <span className="font-bold">Phone Number</span>
-                    <svg
-                      stroke="currentColor"
-                      fill="currentColor"
-                      strokeWidth="0"
-                      viewBox="0 0 512 512"
-                      height="1em"
-                      width="1em"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
+                <a href="tel:09175271271">
+                  <div className="card flex flex-col  ">
+                    <div className="top flex items-center  gap-3">
+                      <svg
+                        stroke="currentColor"
                         fill="none"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        stroke-width="48"
-                        d="M268 112l144 144-144 144m124-144H100"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div className="bottom font-extralight">
-                    <div>
-                      <a href="tel:09175271271">09175271271</a>
+                        height="2em"
+                        width="2em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        <path d="M14.05 2a9 9 0 0 1 8 7.94"></path>
+                        <path d="M14.05 6A5 5 0 0 1 18 10"></path>
+                      </svg>
+                      <span className="font-bold">Phone Number</span>
+                      <svg
+                        stroke="currentColor"
+                        fill="currentColor"
+                        strokeWidth="0"
+                        viewBox="0 0 512 512"
+                        height="1em"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="48"
+                          d="M268 112l144 144-144 144m124-144H100"
+                        ></path>
+                      </svg>
                     </div>
-                    {/* <span>09175271271</span> */}
+                    <div className="bottom font-extralight">
+                      <div></div>
+                      <span>09175271271</span>
+                    </div>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -230,7 +228,7 @@ export default function Home() {
 
         {/* display it's set to hidden   */}
         <motion.div
-          className=" absolute top-0 right-0 left-0 bottom-0  group-hover/bg:opacity-80  duration-300 hidden lg:block "
+          className=" absolute top-0 right-0 left-0 bottom-0  group-hover/bg:opacity-80  duration-300 hidden lg:block pointer-events-none"
           style={{
             background: useMotionTemplate`radial-gradient(circle 500px at ${mouseX}px ${mouseY}px ,rgb(13 165 233 / 0.1),transparent 80%)`,
           }}
