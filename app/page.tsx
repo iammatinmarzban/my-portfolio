@@ -228,16 +228,16 @@ export default function Home() {
 
         {/* display it's set to hidden   */}
         <motion.div
-          className=" absolute top-0 right-0 left-0 bottom-0  group-hover/bg:opacity-80  duration-300 hidden lg:block pointer-events-none"
+          className=" absolute top-0 right-0 left-0 bottom-0  group-hover/bg:opacity-60  transition duration-300 hidden lg:block pointer-events-none"
           style={{
-            background: useMotionTemplate`radial-gradient(circle 500px at ${mouseX}px ${mouseY}px ,rgb(13 165 233 / 0.1),transparent 80%)`,
+            background: useMotionTemplate`radial-gradient(circle 400px at ${mouseX}px ${mouseY}px ,rgb(13 165 233 / 0.1),transparent 90%) `,
           }}
         />
         {/* page-content-text flex justify-between text-gray-400 max-w-screen-xl mx-auto pt-24 items-start  */}
 
         {/* Hardcoded BLUR property to CSS */}
         <div
-          className={`page-content-text  lg:flex justify-between text-gray-400  mx-auto pt-14  md:pt-24 text-sm items-start px-5 ${
+          className={`page-content-text  lg:flex justify-between text-gray-400  mx-auto pt-14  md:pt-24 text-sm items-start px-8 ${
             showContactMenu ? "blur-sm" : ""
           }`}
         >
@@ -288,7 +288,7 @@ export default function Home() {
               )}
             </div>
 
-            <div className="contact_me  flex-col  gap-5 mt-5 hidden">
+            {/* <div className="contact_me  flex-col  gap-5 mt-5  hidden">
               <div className="Email flex gap-2 items-center  text-gray-400 fill-gray-400  border-[1px] border-transparent rounded-md py-3 ">
                 <div className="email-text flex flex-col">
                   <h3>Email</h3>
@@ -301,10 +301,8 @@ export default function Home() {
                 <h3>Call</h3>
                 <h3 className="hover:underline">+98-9175271271</h3>
               </div>
-            </div>
+            </div> */}
 
-            {/* "navbar my-14 text-gray-400 uppercase font-bold flex flex-col gap-7 text-xs " */}
-            {/*  *****Navbar is Hidden*****  */}
             <div className="navbar my-14 text-gray-400 uppercase font-bold lg:flex flex-col gap-7 text-xs hidden ">
               <div className="navbar-item flex items-center about gap-2 group/about cursor-pointer max-w-min">
                 <span
@@ -371,19 +369,23 @@ export default function Home() {
               </div>
             </div>
             {/* <div className="contact_me flex flex-col  gap-5 mt-10 text-xs  "> */}
-            <div className="contact_me-large-screen md: flex-col  gap-5 mt-10 text-xs hidden  ">
-              <div className="Email flex gap-2 items-center  text-gray-400 fill-gray-400 border-2 border-transparent rounded-md py-3 ">
-                <div className="email-text flex flex-col">
-                  <h3>Email</h3>
-                  <h3 className="hover:underline">
-                    matinmarzban1271@gmail.com
-                  </h3>
+            <div className="contact_me-large-screen md: flex-col  gap-5 mt-10 text-xs lg:flex hidden  ">
+              <a href="mailto:matinmarzban1271@gmail.com">
+                <div className="Email flex gap-2 items-center  text-gray-400 fill-gray-400 border-2 border-transparent rounded-md py-3 ">
+                  <div className="email-text flex flex-col gap-2  ">
+                    <h3>Email</h3>
+                    <h3 className="hover:underline">
+                      matinmarzban1271@gmail.com
+                    </h3>
+                  </div>
                 </div>
-              </div>
-              <div className="phone_number flex flex-col  fill-gray-400 text-gray-400 gap-2">
-                <h3>Call</h3>
-                <h3 className="hover:underline">+98-9175271271</h3>
-              </div>
+              </a>
+              <a href="tel:+98-9175271271">
+                <div className="phone_number flex flex-col  fill-gray-400 text-gray-400 gap-2">
+                  <h3>Call</h3>
+                  <h3 className="hover:underline">+98-9175271271</h3>
+                </div>
+              </a>
             </div>
 
             {/* <div className="linkedIcons flex gap-6 mt-16"> */}
@@ -462,7 +464,9 @@ export default function Home() {
             className="right-part-large-screen text-left basis-1/2 text-gray-400  top-24 text-base  "
           >
             <div className="About  pt-16">
-              <h3 className="text-white pb-10 tracking-wide ">ABOUT</h3>
+              <h3 className="text-white pb-10 tracking-wide lg:lowercase">
+                ABOUT
+              </h3>
               <div className="first ">
                 {" "}
                 I initiated my journey into the realm of web development by
@@ -495,41 +499,25 @@ export default function Home() {
               className="Experience min-w-full flex flex-col gap-2  pt-16"
             >
               {/* <div className="experience-card flex items-baseline text-gray-400 p-3 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-10  duration-200 hover:bg-[#1c2b4074]"> */}
-              <h3 className="text-white pb-10 tracking-wide ">EXPERIENCE</h3>
+              <h3 className="text-white pb-10 tracking-wide lg:lowercase">
+                EXPERIENCE
+              </h3>
 
               <ExperienceCard
-                startingDate={"2020"}
-                finishingDate={"PRESENT"}
-                role={"Freelancer Developer"}
+                startingDate={"2023"}
+                finishingDate={"2024"}
+                role={"Emdad hadese"}
                 exactRoleName={"Front End Developer & UI UX designer"}
-                description={
-                  "  Build, style, and ship high-quality websites, design systems, mobile apps, and digital experiences for a diversearray of projects for clients including Asanbar Business and more."
-                }
-              />
-              <ExperienceCard
-                startingDate={"2020"}
-                finishingDate={"PRESENT"}
-                role={"Freelancer Developer"}
-                exactRoleName={"Front End Developer & UI UX designer"}
-                description={
-                  "  Build, style, and ship high-quality websites, design systems, mobile apps, and digital experiences for a diversearray of projects for clients including Asanbar Business and more."
-                }
-              />
-              <ExperienceCard
-                startingDate={"2020"}
-                finishingDate={"PRESENT"}
-                role={"Freelancer Developer"}
-                exactRoleName={"Front End Developer & UI UX designer"}
-                description={
-                  "  Build, style, and ship high-quality websites, design systems, mobile apps, and digital experiences for a diversearray of projects for clients including Asanbar Business and more."
-                }
+                description={"Build and maintain responsive website"}
               />
             </div>
             <div
               ref={project}
               className="Project pt-16 flex flex-col gap-1 pb-16"
             >
-              <h3 className="text-white pb-10 tracking-wide ">PROJECTS</h3>
+              <h3 className="text-white pb-10 tracking-wide lg:lowercase">
+                PROJECTS
+              </h3>
               <Link href={"/Asanbar"}>
                 <div className="project-card  flex justify-between items-center  text-gray-400 p-3 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-10  duration-200 hover:bg-[#1c2b4074] cursor-pointer group/project my-3">
                   <div className="left flex  gap-6">
@@ -598,22 +586,23 @@ export default function Home() {
                   </div>
                 </div>
               </Link>
-              <Link href={"/"}>
+              {/* <Link href={"/"}>
                 <div className="project-card  flex justify-between items-center  text-gray-400 p-3 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-10  duration-200 hover:bg-[#1c2b4074] cursor-pointer group/project my-3">
                   <div className="left flex  gap-6">
                     <div className="left">
                       <img
-                        className="w-[100px] h-auto "
-                        src="logo1.png"
-                        alt="driver"
+                        src="logo-white.png"
+                        className="w-[100px] h-auto"
+                        alt="لوگو امداد حادثه"
+                        width="180"
                       />
                     </div>
                     <div className="right">
                       <div className="name text-white text-base font-medium group-hover/project:text-[#a5d1e5]">
-                        Ninja Org
+                        Emdad Hadese
                       </div>
                       <div className="role text-gray-500">
-                        Front End Developer
+                        Front End Developer(PHP)
                       </div>
                     </div>
                   </div>
@@ -631,75 +620,7 @@ export default function Home() {
                     </svg>
                   </div>
                 </div>
-              </Link>
-              <Link href={"/"}>
-                <div className="project-card  flex justify-between items-center  text-gray-400 p-3 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-10  duration-200 hover:bg-[#1c2b4074] cursor-pointer group/project my-3">
-                  <div className="left flex  gap-6">
-                    <div className="left">
-                      <img
-                        className="w-[100px] h-auto "
-                        src="logo2.png"
-                        alt="driver"
-                      />
-                    </div>
-                    <div className="right">
-                      <div className="name text-white text-base font-medium group-hover/project:text-[#a5d1e5]">
-                        Arrow
-                      </div>
-                      <div className="role text-gray-500">
-                        Front End Developer
-                      </div>
-                    </div>
-                  </div>
-                  <div className="right">
-                    <svg
-                      className="w-5 h-5 fill-white group-hover/project:fill-[#a5d1e5]"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 320 512"
-                    >
-                      !--!Font Awesome Free 6.5.1 by @fontawesome -
-                      https://fontawesome.com License -
-                      https://fontawesome.com/license/free Copyright 2024
-                      Fonticons, Inc.--
-                      <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
-                    </svg>
-                  </div>
-                </div>
-              </Link>
-              <Link href={"/"}>
-                <div className="project-card  flex justify-between items-center  text-gray-400 p-3 border-[1px] border-transparent rounded hover:border-blue-300 hover:border-opacity-10  duration-200 hover:bg-[#1c2b4074] cursor-pointer group/project my-3">
-                  <div className="left flex  gap-6">
-                    <div className="left">
-                      <img
-                        className="w-[100px] h-auto "
-                        src="logo3.jpg"
-                        alt="driver"
-                      />
-                    </div>
-                    <div className="right">
-                      <div className="name text-white text-base font-medium group-hover/project:text-[#a5d1e5]">
-                        No LLC
-                      </div>
-                      <div className="role text-gray-500">
-                        Front End Developer
-                      </div>
-                    </div>
-                  </div>
-                  <div className="right">
-                    <svg
-                      className="w-5 h-5 fill-white group-hover/project:fill-[#a5d1e5]"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 320 512"
-                    >
-                      !--!Font Awesome Free 6.5.1 by @fontawesome -
-                      https://fontawesome.com License -
-                      https://fontawesome.com/license/free Copyright 2024
-                      Fonticons, Inc.--
-                      <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
-                    </svg>
-                  </div>
-                </div>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

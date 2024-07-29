@@ -10,7 +10,7 @@ function ExperienceCard({
       <div className="duration-section basis-1/5 text-xs font-medium  text-gray-500 pr-2">
         <div className="flex items-center">
           <span>{startingDate}</span>
-          <span className="dash__ w-3 h-[0.07em]  bg-gray-500 mx-2"></span>
+          <span className="dash w-3 h-[1px]  bg-gray-500 mx-2"></span>
           <span>{finishingDate}</span>
         </div>
       </div>
